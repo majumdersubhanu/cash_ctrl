@@ -2,11 +2,8 @@ import 'dart:math';
 
 import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:fit_sync_plus/presentation/widgets/button_widgets.dart';
-import 'package:fit_sync_plus/presentation/widgets/card_widgets.dart';
 import 'package:fit_sync_plus/presentation/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:jiffy/jiffy.dart';
-import 'package:pie_chart/pie_chart.dart';
 
 class AnalyticsPage extends StatelessWidget {
   AnalyticsPage({
@@ -53,7 +50,7 @@ class AnalyticsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            MediumSemiBoldHeading(label: "Transactions"),
+            const MediumSemiBoldHeading(label: "Transactions"),
             const ButtonBar(
               alignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -72,6 +69,8 @@ class AnalyticsPage extends StatelessWidget {
 
 class PaginatedDataTableWidget extends StatelessWidget {
   final List<DataRow> _dataRows = generateRandomData(20);
+
+  PaginatedDataTableWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

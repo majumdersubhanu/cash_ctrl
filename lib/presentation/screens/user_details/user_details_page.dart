@@ -95,6 +95,6 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
   }
 
   onProfileCompletionButtonPressed(Map<String, Object?> value) {
-    context.router.replace(LandingRoute());
+    context.router.replace(const LandingRoute());
   }
 }

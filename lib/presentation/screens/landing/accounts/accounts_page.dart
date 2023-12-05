@@ -13,42 +13,42 @@ class AccountsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MediumSemiBoldHeading(label: "All Accounts"),
                 RegularTextButton(label: "Add Account")
               ],
             ),
-            Text(
+            const Text(
                 "Account balance is calculated by the transactions you enter actual account balance may vary you can edit their account balance in such cases."),
             const SizedBox(height: 20),
-            MediumSemiBoldHeading(label: "Bank Accounts"),
+            const MediumSemiBoldHeading(label: "Bank Accounts"),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.2,
               child: ListView.builder(
                 itemCount: 2,
-                itemBuilder: (context, index) => ListTile(
+                itemBuilder: (context, index) => const ListTile(
                   title: Text("SBI"),
                 ),
               ),
             ),const SizedBox(height: 20),
-            MediumSemiBoldHeading(label: "Credit Cards"),
+            const MediumSemiBoldHeading(label: "Credit Cards"),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.2,
               child: ListView.builder(
                 itemCount: 1,
-                itemBuilder: (context, index) => ListTile(
+                itemBuilder: (context, index) => const ListTile(
                   title: Text("SBI"),
                 ),
               ),
             ),const SizedBox(height: 20),
-            MediumSemiBoldHeading(label: "Wallets"),
+            const MediumSemiBoldHeading(label: "Wallets"),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.2,
               child: ListView.builder(
                 itemCount: 2,
-                itemBuilder: (context, index) => ListTile(
+                itemBuilder: (context, index) => const ListTile(
                   title: Text("SBI"),
                 ),
               ),

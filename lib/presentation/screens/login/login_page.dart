@@ -146,6 +146,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   onLoginButtonPressed(Map<String, Object?> value) {
-    context.router.replace(LandingRoute());
+    context.router.replace(const LandingRoute());
   }
 }

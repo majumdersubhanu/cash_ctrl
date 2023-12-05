@@ -126,13 +126,13 @@ class _HomePageState extends State<HomePage> {
                       enableFeedback: true,
                       title: Text(amount),
                       subtitle: Text(category),
-                      leading: Icon(Icons.fastfood),
+                      leading: const Icon(Icons.fastfood),
                       trailing: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(Jiffy.parseFromDateTime(DateTime.now()).MMMEd),
-                          Icon(Icons.money),
+                          const Icon(Icons.money),
                         ],
                       ),
                     ),

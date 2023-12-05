@@ -28,8 +28,8 @@ class InsightCard extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 20,
-            child: Icon(icon),
             backgroundColor: backgroundColour.withAlpha(60),
+            child: Icon(icon),
           ),
           const SizedBox(width: 10),
           Column(
@@ -46,7 +46,7 @@ class InsightCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: 20,)
+          const SizedBox(width: 20,)
         ],
       ),
     );

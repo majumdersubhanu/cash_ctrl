@@ -3,7 +3,6 @@ import 'package:fit_sync_plus/presentation/screens/landing/accounts/accounts_pag
 import 'package:fit_sync_plus/presentation/screens/landing/analytics/analytics_page.dart';
 import 'package:fit_sync_plus/presentation/screens/landing/home/home_page.dart';
 import 'package:fit_sync_plus/presentation/widgets/text_widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -31,8 +30,8 @@ class _LandingPageState extends State<LandingPage> {
       appBar: AppBar(
         title: Text("Hi 👋, $username"),
         centerTitle: false,
-        actions: [
-          const CircleAvatar(
+        actions: const [
+          CircleAvatar(
             child: MediumSemiBoldHeading(label: "SM"),
           )
         ],
