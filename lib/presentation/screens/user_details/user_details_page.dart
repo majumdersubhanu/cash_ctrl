@@ -49,11 +49,14 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                 const MediumSemiBoldHeading(
                     label: "Please fill in these details to continue"),
                 const SizedBox(height: 50),
-                const Align(
+                Align(
                   alignment: Alignment.center,
-                  child: CircleAvatar(
-                    radius: 75,
-                    child: LargeHeading(label: "JD"),
+                  child: GestureDetector(
+                    onTap: ,
+                    child: CircleAvatar(
+                      radius: 50,
+                      child: Icon(Icons.person_outlined),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
