@@ -9,6 +9,8 @@ class NewExpenseController extends GetxController {
   User? user = FirebaseAuth.instance.currentUser;
   ExpenseProvider provider = ExpenseProvider();
 
-  uploadToFirestore(BuildContext context, Expense expense) =>
-      provider.postExpense(expense, context);
+  uploadToFirestore(BuildContext context, Expense expense) {
+    provider.postExpense(expense, context);
+    Get.back();
+  }
 }

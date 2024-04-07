@@ -98,16 +98,16 @@ class HomeView extends GetView<HomeController> {
                       IconButtonWithText(
                         label: 'Contacts',
                         iconData: Ionicons.people_circle_outline,
-                        onTap: () => context.showWIP(),
+                        onTap: () => context.showWorkInProgress(),
                       ),
                       IconButtonWithText(
                         label: 'Phone',
-                        onTap: () => context.showWIP(),
+                        onTap: () => context.showWorkInProgress(),
                         iconData: Ionicons.call_outline,
                       ),
                       IconButtonWithText(
                         label: 'UPI ID',
-                        onTap: () => context.showWIP(),
+                        onTap: () => context.showWorkInProgress(),
                         iconData: Ionicons.id_card_outline,
                       ),
                     ],
@@ -157,7 +157,7 @@ class HomeView extends GetView<HomeController> {
                             getExpenseCategoryEnumValue(paymentCategory));
 
                         return GestureDetector(
-                          onTap: () => context.showWIP(),
+                          onTap: () => context.showWorkInProgress(),
                           child: Container(
                             decoration: BoxDecoration(
                               color: Get.theme.colorScheme.surface,

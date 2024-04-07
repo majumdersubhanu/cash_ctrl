@@ -37,7 +37,7 @@ class RegisterController extends GetxController {
             Get.toNamed(Routes.OTP_VERIFICATION,
                 arguments: formValue['phone_number'].toString());
           } else {
-            context.showThemedSnackbar('Hooray!',
+            context.showSnackbar('Hooray!',
                 'Welcome to Cash Ctrl, ${value.user?.displayName.toString()}');
 
             Get.offAllNamed(Routes.PROFILE_COMPLETION);
@@ -46,10 +46,10 @@ class RegisterController extends GetxController {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        context.showThemedSnackbar(
+        context.showSnackbar(
             'Oh oh!', 'The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        context.showThemedSnackbar(
+        context.showSnackbar(
             'Oh oh!', 'An account already exists for that email, please login');
       }
     } catch (e) {

@@ -44,14 +44,14 @@ class LoginController extends GetxController {
       )
           .then((value) {
         if (value.user != null) {
-          context.showThemedSnackbar(
+          context.showSnackbar(
               'Hooray!', 'Welcome back, ${value.user?.displayName}');
           Get.offNamed(Routes.BASE_PAGE);
         }
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        context.showThemedSnackbar(
+        context.showSnackbar(
             'Aw snap!', 'We didn\'t find any user with those credentials');
       }
     }

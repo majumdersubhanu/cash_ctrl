@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 extension BuildContextEntension<T> on BuildContext {
-  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showSnackBar(
-      String message) {
-    return ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
-
-  showThemedSnackbar(String title, String message) {
+  showSnackbar(String title, String message) {
     return Get.snackbar(
       title,
       message,
@@ -26,6 +15,6 @@ extension BuildContextEntension<T> on BuildContext {
     );
   }
 
-  showWIP() => showThemedSnackbar(
-      'WIP', 'Hey there, 👋 we\'re working to get this up ASAP');
+  showWorkInProgress() =>
+      showSnackbar('WIP', 'Hey there, 👋 we\'re working to get this up ASAP');
 }

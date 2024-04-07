@@ -28,11 +28,11 @@ class NewGroupController extends GetxController {
             .toList(),
       });
 
-      context.showThemedSnackbar('Success!', 'Group created successfully');
+      context.showSnackbar('Success!', 'Group created successfully');
 
       Navigator.of(context).pop();
     } catch (e) {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Error!', 'Failed to create group. Please try again.');
     }
   }

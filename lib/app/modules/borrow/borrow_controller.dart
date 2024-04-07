@@ -28,9 +28,9 @@ class BorrowController extends GetxController {
       await firestore
           .collection('borrowing-data')
           .add(borrowMap as Map<String, dynamic>);
-      context.showThemedSnackbar('Success!', 'Borrowed money successfully');
+      context.showSnackbar('Success!', 'Borrowed money successfully');
     } catch (e) {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Error!', 'Failed to borrow money. Please try again.');
     }
   }

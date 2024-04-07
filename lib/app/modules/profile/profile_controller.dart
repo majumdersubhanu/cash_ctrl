@@ -37,7 +37,7 @@ class ProfileController extends GetxController {
     if (pickedFile != null) {
       _editImage(File(pickedFile.path), context);
     } else {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Oh shoot!', 'No image was selected, please try again.');
     }
     update();
@@ -69,13 +69,13 @@ class ProfileController extends GetxController {
       await imagesRef.putFile(file.value!).then((p0) async {
         String photoURL = await imagesRef.getDownloadURL();
         user.value?.updatePhotoURL(photoURL).then((_) {
-          context.showThemedSnackbar(
+          context.showSnackbar(
               'Success', 'Profile picture updated successfully.');
           update();
         });
       });
     } catch (e) {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Error', 'Failed to upload image. Please try again.');
     }
   }

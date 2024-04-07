@@ -13,7 +13,7 @@ class ExpenseProvider {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Stream<List<Expense>> streamLastFiveTransactions() {
+  Stream<List<Expense>> getLatestTransactionsStream() {
     String? userUid = _auth.currentUser?.uid;
     return _firestore
         .collection("expense-data")
@@ -29,16 +29,16 @@ class ExpenseProvider {
     try {
       await _firestore.collection('expense-data').add(expense.toJson());
 
-      context.showThemedSnackbar('Success!', 'Expense added successfully');
+      context.showSnackbar('Success!', 'Expense added successfully');
 
+
+      //TODO: find a better method: maybe implement streams for all the data
       Get.find<AnalyticsController>().subscribeToExpenseStreams();
       Get.find<LendingController>().subscribeToExpenseStreams();
-
       Get.find<HomeController>().analyticsInfo();
 
-      Navigator.of(context).pop();
     } catch (e) {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Error!', 'Failed to add expense. Please try again.');
     }
   }

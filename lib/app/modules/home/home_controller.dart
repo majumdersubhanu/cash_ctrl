@@ -15,7 +15,7 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
 
-    provider.streamLastFiveTransactions().listen((updatedExpenses) {
+    provider.getLatestTransactionsStream().listen((updatedExpenses) {
       expenses.value = updatedExpenses;
     });
 

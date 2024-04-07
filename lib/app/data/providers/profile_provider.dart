@@ -1,17 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
 
 import '../models/profile_model.dart';
 
-class ProfileProvider extends GetConnect {
+class ProfileProvider {
   Profile profile = Profile();
   String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-
-  @override
-  void onInit() {
-    getProfile(uid);
-  }
 
   Future<Profile?> getProfile(String uid) async {
     var db = FirebaseFirestore.instance;
@@ -26,9 +20,4 @@ class ProfileProvider extends GetConnect {
       return null;
     }
   }
-
-  Future<Response<Profile>> postProfile(Profile profile) async =>
-      await post('profile', profile);
-
-  Future<Response> deleteProfile(int id) async => await delete('profile/$id');
 }

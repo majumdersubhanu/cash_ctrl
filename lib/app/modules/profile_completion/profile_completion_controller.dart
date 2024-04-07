@@ -24,7 +24,7 @@ class ProfileCompletionController extends GetxController {
     if (pickedFile != null) {
       _editImage(File(pickedFile.path), context);
     } else {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Oh shoot!', 'No image was selected, please try again.');
     }
   }
@@ -48,7 +48,7 @@ class ProfileCompletionController extends GetxController {
 
   Future<void> _uploadToFirebase(BuildContext context) async {
     if (file == null) {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Error', 'There was a problem getting the image file.');
       return;
     }
@@ -61,13 +61,13 @@ class ProfileCompletionController extends GetxController {
       await imagesRef.putFile(file!).then((p0) async {
         String photoURL = await imagesRef.getDownloadURL();
         user.value?.updatePhotoURL(photoURL).then((_) {
-          context.showThemedSnackbar(
+          context.showSnackbar(
               'Success', 'Profile picture updated successfully.');
           update();
         });
       });
     } catch (e) {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Error', 'Failed to upload image. Please try again.');
     }
   }

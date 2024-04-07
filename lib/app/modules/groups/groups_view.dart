@@ -40,7 +40,7 @@ class GroupsView extends GetView<GroupsController> {
                 splashColor: Get.theme.colorScheme.secondary,
                 overlayColor:
                     MaterialStatePropertyAll(Get.theme.colorScheme.secondary),
-                onTap: () => context.showWIP(),
+                onTap: () => context.showWorkInProgress(),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Get.theme.colorScheme.surface,

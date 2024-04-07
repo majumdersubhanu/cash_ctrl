@@ -87,7 +87,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
     FirebaseAuth.instance
         .sendPasswordResetEmail(email: value['email'].toString())
         .whenComplete(() {
-      context.showThemedSnackbar(
+      context.showSnackbar(
           'Email Sent', 'Password reset email has been sent to your email');
     });
 

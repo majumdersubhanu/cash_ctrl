@@ -104,7 +104,7 @@ class LendingView extends GetView<LendingController> {
                                 title: const Text('Export to Excel'),
                                 leading: const Icon(Ionicons.easel_outline),
                                 onTap: () {
-                                  context.showWIP();
+                                  context.showWorkInProgress();
                                   Get.back();
                                 },
                               ),
@@ -112,7 +112,7 @@ class LendingView extends GetView<LendingController> {
                                 title: const Text('Export as PDF'),
                                 leading: const Icon(Ionicons.document_outline),
                                 onTap: () {
-                                  context.showWIP();
+                                  context.showWorkInProgress();
                                   Get.back();
                                 },
                               ),

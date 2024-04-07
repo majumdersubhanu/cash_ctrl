@@ -164,7 +164,7 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
                     if (_formGroup.valid) {
                       _handleSubmit(context, _formGroup.value);
                     } else {
-                      context.showThemedSnackbar('Aww Snap!',
+                      context.showSnackbar('Aww Snap!',
                           'Please fill in all the details correctly');
                     }
                   },
