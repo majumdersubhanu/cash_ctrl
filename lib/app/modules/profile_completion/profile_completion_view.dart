@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -164,10 +162,8 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
                     if (_formGroup.valid) {
                       _handleSubmit(context, _formGroup.value);
                     } else {
-                      context.showAwesomeSnackBar(
-                          'Aww Snap!',
-                          'Please fill in all the details correctly',
-                          ContentType.warning);
+                      context.showThemedSnackbar('Aww Snap!',
+                          'Please fill in all the details correctly');
                     }
                   },
                   child: const Text('Submit Profile'),

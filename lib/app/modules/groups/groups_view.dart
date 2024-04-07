@@ -1,11 +1,9 @@
+import 'package:cash_ctrl/app/core/extensions.dart';
+import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
-
-import 'package:cash_ctrl/app/core/extensions.dart';
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 
 import 'groups_controller.dart';
 

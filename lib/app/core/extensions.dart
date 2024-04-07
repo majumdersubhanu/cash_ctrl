@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -90,14 +88,17 @@ extension BuildContextEntension<T> on BuildContext {
     );
   }
 
-  showAwesomeSnackBar(String title, String message, ContentType contentType) {
-    return Get.snackbar(title, message,
-        snackStyle: SnackStyle.FLOATING,
-        isDismissible: true,
-        icon: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Image.asset('assets/ic_launcher.png'),
-        ));
+  showThemedSnackbar(String title, String message) {
+    return Get.snackbar(
+      title,
+      message,
+      snackStyle: SnackStyle.FLOATING,
+      isDismissible: true,
+      icon: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Image.asset('assets/ic_launcher.png'),
+      ),
+    );
   }
 
   Future<bool?> showToast(String message) {
@@ -111,8 +112,6 @@ extension BuildContextEntension<T> on BuildContext {
     );
   }
 
-  showWIP() {
-    showAwesomeSnackBar('WIP',
-        'Hey there, 👋 we\'re working to get this up ASAP', ContentType.help);
-  }
+  showWIP() => showThemedSnackbar(
+      'WIP', 'Hey there, 👋 we\'re working to get this up ASAP');
 }

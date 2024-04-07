@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../core/extensions.dart';
@@ -31,8 +29,7 @@ class ExpenseProvider {
     try {
       await _firestore.collection('expense-data').add(expense.toJson());
 
-      context.showAwesomeSnackBar(
-          'Success!', 'Expense added successfully', ContentType.success);
+      context.showThemedSnackbar('Success!', 'Expense added successfully');
 
       Get.find<AnalyticsController>().subscribeToExpenseStreams();
       Get.find<LendingController>().subscribeToExpenseStreams();
@@ -41,11 +38,8 @@ class ExpenseProvider {
 
       Navigator.of(context).pop();
     } catch (e) {
-      context.showAwesomeSnackBar(
-        'Error!',
-        'Failed to add expense. Please try again.',
-        ContentType.failure,
-      );
+      context.showThemedSnackbar(
+          'Error!', 'Failed to add expense. Please try again.');
     }
   }
 

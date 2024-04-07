@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -46,17 +44,15 @@ class LoginController extends GetxController {
       )
           .then((value) {
         if (value.user != null) {
-          context.showAwesomeSnackBar('Hooray!',
-              'Welcome back, ${value.user?.displayName}', ContentType.success);
+          context.showThemedSnackbar(
+              'Hooray!', 'Welcome back, ${value.user?.displayName}');
           Get.offNamed(Routes.BASE_PAGE);
         }
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        context.showAwesomeSnackBar(
-            'Aw snap!',
-            'We didn\'t find any user with those credentials',
-            ContentType.failure);
+        context.showThemedSnackbar(
+            'Aw snap!', 'We didn\'t find any user with those credentials');
       }
     }
   }

@@ -25,7 +25,6 @@ class AnalyticsController extends GetxController {
     subscribeToExpenseStreams();
   }
 
-
   Future<void> subscribeToExpenseStreams() async {
     yearlyExpenses.value = await provider.getYearlyExpenses();
     _updateYearlyAnalytics();
@@ -41,7 +40,7 @@ class AnalyticsController extends GetxController {
 
     for (Expense expense in monthlyExpenses) {
       final category = expense.transaction?.paymentCategory ??
-          getExpenseName(ExpenseCategory.Miscellaneous);
+          getCategoryName(ExpenseCategory.miscellaneous);
       final amount = expense.transaction?.amount ?? 0;
       if (categoryTotals.containsKey(category)) {
         categoryTotals[category] = categoryTotals[category]! + amount;

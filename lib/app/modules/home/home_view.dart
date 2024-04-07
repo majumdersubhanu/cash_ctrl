@@ -1,12 +1,10 @@
+import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:jiffy/jiffy.dart';
-
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 
 import '../../core/enums.dart';
 import '../../core/extensions.dart';
@@ -154,9 +152,9 @@ class HomeView extends GetView<HomeController> {
                             'Miscellaneous';
 
                         IconData? paymentIconData = getPaymentModeIcon(
-                            getPaymentModeValue(paymentMode));
-                        IconData? categoryIconData = getExpenseCategoryIcon(
-                            getExpenseCategoryValue(paymentCategory));
+                            getPaymentModeEnumValue(paymentMode));
+                        IconData? categoryIconData = getCategoryIcon(
+                            getExpenseCategoryEnumValue(paymentCategory));
 
                         return GestureDetector(
                           onTap: () => context.showWIP(),

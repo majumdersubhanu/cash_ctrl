@@ -1,47 +1,46 @@
 import 'package:flutter/material.dart';
-
 import 'package:ionicons/ionicons.dart';
 
 enum ExpenseCategory {
-  Food,
-  Travel,
-  Entertainment,
-  Utilities,
-  Shopping,
-  Health,
-  Education,
-  Insurance,
-  Investment,
-  Miscellaneous,
+  food,
+  travel,
+  entertainment,
+  utilities,
+  shopping,
+  health,
+  education,
+  insurance,
+  investment,
+  miscellaneous,
 }
 
 enum PaymentMode {
-  Cash,
-  Card,
-  UPI,
+  cash,
+  card,
+  upi,
 }
 
-String getExpenseName(ExpenseCategory expenseCategory) {
+String getCategoryName(ExpenseCategory expenseCategory) {
   switch (expenseCategory) {
-    case ExpenseCategory.Food:
+    case ExpenseCategory.food:
       return 'Food';
-    case ExpenseCategory.Travel:
+    case ExpenseCategory.travel:
       return 'Travel';
-    case ExpenseCategory.Entertainment:
+    case ExpenseCategory.entertainment:
       return 'Entertainment';
-    case ExpenseCategory.Utilities:
+    case ExpenseCategory.utilities:
       return 'Utilities';
-    case ExpenseCategory.Shopping:
+    case ExpenseCategory.shopping:
       return 'Shopping';
-    case ExpenseCategory.Health:
+    case ExpenseCategory.health:
       return 'Health';
-    case ExpenseCategory.Education:
+    case ExpenseCategory.education:
       return 'Education';
-    case ExpenseCategory.Insurance:
+    case ExpenseCategory.insurance:
       return 'Insurance';
-    case ExpenseCategory.Investment:
+    case ExpenseCategory.investment:
       return 'Investment';
-    case ExpenseCategory.Miscellaneous:
+    case ExpenseCategory.miscellaneous:
       return 'Miscellaneous';
     default:
       return 'Unknown';
@@ -50,11 +49,11 @@ String getExpenseName(ExpenseCategory expenseCategory) {
 
 String getPaymentModeName(PaymentMode paymentMode) {
   switch (paymentMode) {
-    case PaymentMode.Cash:
+    case PaymentMode.cash:
       return 'Cash';
-    case PaymentMode.Card:
+    case PaymentMode.card:
       return 'Card';
-    case PaymentMode.UPI:
+    case PaymentMode.upi:
       return 'UPI';
     default:
       return 'Unknown';
@@ -63,80 +62,80 @@ String getPaymentModeName(PaymentMode paymentMode) {
 
 IconData? getPaymentModeIcon(PaymentMode paymentMode) {
   switch (paymentMode) {
-    case PaymentMode.Cash:
+    case PaymentMode.cash:
       return Ionicons.cash_outline;
-    case PaymentMode.Card:
+    case PaymentMode.card:
       return Ionicons.card_outline;
-    case PaymentMode.UPI:
+    case PaymentMode.upi:
       return Ionicons.phone_portrait_outline;
     default:
       return Ionicons.help_circle_outline;
   }
 }
 
-IconData getExpenseCategoryIcon(ExpenseCategory expenseCategory) {
+IconData getCategoryIcon(ExpenseCategory expenseCategory) {
   switch (expenseCategory) {
-    case ExpenseCategory.Food:
+    case ExpenseCategory.food:
       return Ionicons.fast_food_outline;
-    case ExpenseCategory.Travel:
+    case ExpenseCategory.travel:
       return Ionicons.airplane_outline;
-    case ExpenseCategory.Entertainment:
+    case ExpenseCategory.entertainment:
       return Ionicons.extension_puzzle_outline;
-    case ExpenseCategory.Utilities:
+    case ExpenseCategory.utilities:
       return Ionicons.construct_outline;
-    case ExpenseCategory.Shopping:
+    case ExpenseCategory.shopping:
       return Ionicons.cart_outline;
-    case ExpenseCategory.Health:
+    case ExpenseCategory.health:
       return Ionicons.medkit_outline;
-    case ExpenseCategory.Education:
+    case ExpenseCategory.education:
       return Ionicons.school_outline;
-    case ExpenseCategory.Insurance:
+    case ExpenseCategory.insurance:
       return Ionicons.calendar_number_outline;
-    case ExpenseCategory.Investment:
+    case ExpenseCategory.investment:
       return Ionicons.trending_up_outline;
-    case ExpenseCategory.Miscellaneous:
+    case ExpenseCategory.miscellaneous:
       return Ionicons.layers_outline;
     default:
       return Ionicons.bug_outline;
   }
 }
 
-PaymentMode getPaymentModeValue(String paymentMode) {
+PaymentMode getPaymentModeEnumValue(String paymentMode) {
   switch (paymentMode) {
     case 'Cash':
-      return PaymentMode.Cash;
+      return PaymentMode.cash;
     case 'Card':
-      return PaymentMode.Card;
+      return PaymentMode.card;
     case 'UPI':
-      return PaymentMode.UPI;
+      return PaymentMode.upi;
     default:
-      return PaymentMode.Cash;
+      return PaymentMode.cash;
   }
 }
 
-ExpenseCategory getExpenseCategoryValue(String category) {
+ExpenseCategory getExpenseCategoryEnumValue(String category) {
   switch (category) {
     case 'Food':
-      return ExpenseCategory.Food;
+      return ExpenseCategory.food;
     case 'Travel':
-      return ExpenseCategory.Travel;
+      return ExpenseCategory.travel;
     case 'Entertainment':
-      return ExpenseCategory.Entertainment;
+      return ExpenseCategory.entertainment;
     case 'Utilities':
-      return ExpenseCategory.Utilities;
+      return ExpenseCategory.utilities;
     case 'Shopping':
-      return ExpenseCategory.Shopping;
+      return ExpenseCategory.shopping;
     case 'Health':
-      return ExpenseCategory.Health;
+      return ExpenseCategory.health;
     case 'Education':
-      return ExpenseCategory.Education;
+      return ExpenseCategory.education;
     case 'Insurance':
-      return ExpenseCategory.Insurance;
+      return ExpenseCategory.insurance;
     case 'Investment':
-      return ExpenseCategory.Investment;
+      return ExpenseCategory.investment;
     case 'Miscellaneous':
-      return ExpenseCategory.Miscellaneous;
+      return ExpenseCategory.miscellaneous;
     default:
-      return ExpenseCategory.Miscellaneous;
+      return ExpenseCategory.miscellaneous;
   }
 }

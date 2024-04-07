@@ -1,12 +1,10 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_editor_plus/image_editor_plus.dart';
 import 'package:image_picker/image_picker.dart';
@@ -26,8 +24,8 @@ class ProfileCompletionController extends GetxController {
     if (pickedFile != null) {
       _editImage(File(pickedFile.path), context);
     } else {
-      context.showAwesomeSnackBar('Oh shoot!',
-          'No image was selected, please try again.', ContentType.failure);
+      context.showThemedSnackbar(
+          'Oh shoot!', 'No image was selected, please try again.');
     }
   }
 
@@ -50,8 +48,8 @@ class ProfileCompletionController extends GetxController {
 
   Future<void> _uploadToFirebase(BuildContext context) async {
     if (file == null) {
-      context.showAwesomeSnackBar('Error',
-          'There was a problem getting the image file.', ContentType.failure);
+      context.showThemedSnackbar(
+          'Error', 'There was a problem getting the image file.');
       return;
     }
 
@@ -63,14 +61,14 @@ class ProfileCompletionController extends GetxController {
       await imagesRef.putFile(file!).then((p0) async {
         String photoURL = await imagesRef.getDownloadURL();
         user.value?.updatePhotoURL(photoURL).then((_) {
-          context.showAwesomeSnackBar('Success',
-              'Profile picture updated successfully.', ContentType.success);
+          context.showThemedSnackbar(
+              'Success', 'Profile picture updated successfully.');
           update();
         });
       });
     } catch (e) {
-      context.showAwesomeSnackBar('Error',
-          'Failed to upload image. Please try again.', ContentType.failure);
+      context.showThemedSnackbar(
+          'Error', 'Failed to upload image. Please try again.');
     }
   }
 

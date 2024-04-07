@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/extensions.dart';
@@ -39,10 +37,8 @@ class RegisterController extends GetxController {
             Get.toNamed(Routes.OTP_VERIFICATION,
                 arguments: formValue['phone_number'].toString());
           } else {
-            context.showAwesomeSnackBar(
-                'Hooray!',
-                'Welcome to Cash Ctrl, ${value.user?.displayName.toString()}',
-                ContentType.success);
+            context.showThemedSnackbar('Hooray!',
+                'Welcome to Cash Ctrl, ${value.user?.displayName.toString()}');
 
             Get.offAllNamed(Routes.PROFILE_COMPLETION);
           }
@@ -50,13 +46,11 @@ class RegisterController extends GetxController {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        context.showAwesomeSnackBar('Oh oh!',
-            'The password provided is too weak.', ContentType.warning);
+        context.showThemedSnackbar(
+            'Oh oh!', 'The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        context.showAwesomeSnackBar(
-            'Oh oh!',
-            'An account already exists for that email, please login',
-            ContentType.failure);
+        context.showThemedSnackbar(
+            'Oh oh!', 'An account already exists for that email, please login');
       }
     } catch (e) {
       print(e);

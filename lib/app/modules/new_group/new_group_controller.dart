@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:cash_ctrl/app/core/extensions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
-
-import 'package:cash_ctrl/app/core/extensions.dart';
 
 class NewGroupController extends GetxController {
   RxList<Contact>? contacts = <Contact>[].obs;
@@ -31,16 +28,12 @@ class NewGroupController extends GetxController {
             .toList(),
       });
 
-      context.showAwesomeSnackBar(
-          'Success!', 'Group created successfully', ContentType.success);
+      context.showThemedSnackbar('Success!', 'Group created successfully');
 
       Navigator.of(context).pop();
     } catch (e) {
-      context.showAwesomeSnackBar(
-        'Error!',
-        'Failed to create group. Please try again.',
-        ContentType.failure,
-      );
+      context.showThemedSnackbar(
+          'Error!', 'Failed to create group. Please try again.');
     }
   }
 }

@@ -1,12 +1,10 @@
+import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
-
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 
 import '../../core/extensions.dart';
 import 'borrow_controller.dart';

@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
+import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -104,11 +103,11 @@ class NewExpenseView extends GetView<NewExpenseController> {
                       children: ExpenseCategory.values
                           .map(
                             (category) => ListTile(
-                              leading: Icon(getExpenseCategoryIcon(category)),
-                              title: Text(getExpenseName(category)),
+                              leading: Icon(getCategoryIcon(category)),
+                              title: Text(getCategoryName(category)),
                               onTap: () {
                                 _formGroup.control('paymentCategory').value =
-                                    getExpenseName(category);
+                                    getCategoryName(category);
                                 Get.back();
                               },
                             ),
