@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -27,7 +28,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           primary: true,
@@ -89,7 +90,9 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
         .sendPasswordResetEmail(email: value['email'].toString())
         .whenComplete(() {
       context.showAwesomeSnackBar(
-          'Email Sent', 'Password reset email has been sent to your email', ContentType.success);
+          'Email Sent',
+          'Password reset email has been sent to your email',
+          ContentType.success);
     });
 
     Get.back();

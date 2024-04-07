@@ -1,11 +1,12 @@
+import 'package:flutter/cupertino.dart';
+
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:cash_ctrl/app/core/extensions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
+
+import 'package:cash_ctrl/app/core/extensions.dart';
 
 class NewGroupController extends GetxController {
   RxList<Contact>? contacts = <Contact>[].obs;
@@ -17,9 +18,9 @@ class NewGroupController extends GetxController {
   }
 
   createGroup(BuildContext context) async {
-    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
     try {
-      await _firestore.collection('groups').add({
+      await firestore.collection('groups').add({
         "created_by": {
           "uid": FirebaseAuth.instance.currentUser?.uid,
           "name": FirebaseAuth.instance.currentUser?.displayName,
@@ -35,8 +36,6 @@ class NewGroupController extends GetxController {
 
       Navigator.of(context).pop();
     } catch (e) {
-      // Show error snackbar
-      Logger().d(e);
       context.showAwesomeSnackBar(
         'Error!',
         'Failed to create group. Please try again.',

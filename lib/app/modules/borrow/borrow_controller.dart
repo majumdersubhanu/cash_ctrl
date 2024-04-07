@@ -1,5 +1,11 @@
+import 'package:flutter/src/widgets/framework.dart';
+
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+
+import 'package:cash_ctrl/app/core/extensions.dart';
 
 import '../../data/models/profile_model.dart';
 import '../../data/providers/profile_provider.dart';
@@ -11,23 +17,28 @@ class BorrowController extends GetxController {
 
   ProfileProvider provider = ProfileProvider();
 
-  @override
-  void onInit() {
-    super.onInit();
-
-    profileSetup();
-  }
-
-  profileSetup() async {
-    String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-    profile = await provider.getProfile(uid);
-  }
-
   Future<void> fetchAndSetupProfile() async {
-    // Simulate fetching profile data and updating the UI accordingly
     String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-    await provider.getProfile(
-        uid); // This method should be your asynchronous call to fetch the profile data
-    // Once the profile is fetched, you can update the state (if using StatefulWidgets) or update the reactive variables (if using GetX or similar)
+    await provider.getProfile(uid);
+  }
+
+  Future<void> uploadToFirebase(
+      BuildContext context, Map<String, Object?> value) async {
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+    try {
+      var borrowMap = {"transaction": value, "user": user?.uid};
+
+      await firestore
+          .collection('borrowing-data')
+          .add(borrowMap as Map<String, dynamic>);
+      context.showAwesomeSnackBar(
+          'Success!', 'Borrowed money successfully', ContentType.success);
+    } catch (e) {
+      context.showAwesomeSnackBar(
+        'Error!',
+        'Failed to borrow money. Please try again.',
+        ContentType.failure,
+      );
+    }
   }
 }

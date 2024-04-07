@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -26,7 +27,7 @@ class NewExpenseView extends GetView<NewExpenseController> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           primary: true,

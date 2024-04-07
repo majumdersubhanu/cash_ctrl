@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -18,6 +19,7 @@ class BasePageView extends GetView<BasePageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         actions: [
           GestureDetector(
             onTap: () => Get.toNamed(Routes.PROFILE),
@@ -100,10 +102,9 @@ class BasePageView extends GetView<BasePageController> {
         selectedIndex: controller.currentIndex.value,
         surfaceTintColor: Get.theme.colorScheme.surface,
         onDestinationSelected: (value) => controller.changePage(value),
-        // animationDuration: Durations.short4,
         destinations: [
           NavigationDestination(
-            icon: Icon(Ionicons.cube_outline),
+            icon: const Icon(Ionicons.cube_outline),
             label: 'Dashboard',
             selectedIcon: Icon(
               Ionicons.cube,
@@ -111,7 +112,7 @@ class BasePageView extends GetView<BasePageController> {
             ),
           ),
           NavigationDestination(
-            icon: Icon(Ionicons.pie_chart_outline),
+            icon: const Icon(Ionicons.pie_chart_outline),
             label: 'Analytics',
             selectedIcon: Icon(
               Ionicons.pie_chart,
@@ -119,7 +120,7 @@ class BasePageView extends GetView<BasePageController> {
             ),
           ),
           NavigationDestination(
-            icon: Icon(Ionicons.color_wand_outline),
+            icon: const Icon(Ionicons.color_wand_outline),
             label: 'Split',
             selectedIcon: Icon(
               Ionicons.color_wand,
@@ -127,7 +128,7 @@ class BasePageView extends GetView<BasePageController> {
             ),
           ),
           NavigationDestination(
-            icon: Icon(Ionicons.wallet_outline),
+            icon: const Icon(Ionicons.wallet_outline),
             label: 'Transactions',
             selectedIcon: Icon(
               Ionicons.wallet,

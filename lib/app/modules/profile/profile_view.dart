@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,7 +23,7 @@ class ProfileView extends GetView<ProfileController> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           primary: true,
@@ -53,7 +54,7 @@ class ProfileView extends GetView<ProfileController> {
                               Get.back();
                               controller.pickImage(context);
                             },
-                            leading: Icon(Ionicons.image_outline),
+                            leading: const Icon(Ionicons.image_outline),
                           ),
                           ListTile(
                             title: const Text('Upload image from camera'),
@@ -64,7 +65,7 @@ class ProfileView extends GetView<ProfileController> {
                                 imageSource: ImageSource.camera,
                               );
                             },
-                            leading: Icon(Ionicons.camera_outline),
+                            leading: const Icon(Ionicons.camera_outline),
                           ),
                         ],
                       ),
@@ -128,7 +129,7 @@ class ProfileView extends GetView<ProfileController> {
                   _buildIdentificationDocumentsSection(context),
                   const Gap(20),
                   ListTile(
-                    leading: Icon(Ionicons.log_out_outline),
+                    leading: const Icon(Ionicons.log_out_outline),
                     title: const Text('Logout'),
                     onTap: () {
                       FirebaseAuth.instance.signOut();
@@ -144,8 +145,7 @@ class ProfileView extends GetView<ProfileController> {
                 ],
               );
             } else {
-              return const Center(
-                  child: CircularProgressIndicator()); // Or some placeholder
+              return const Center(child: CircularProgressIndicator());
             }
           }),
         ),
@@ -165,11 +165,10 @@ class ProfileView extends GetView<ProfileController> {
           const Gap(20),
           ReactiveTextField<String>(
             formControlName: 'personal_information.date_of_birth',
-            readOnly: true, // Prevents keyboard from opening
+            readOnly: true,
             decoration: const InputDecoration(
               labelText: 'Date of Birth',
-              suffixIcon:
-                  Icon(Ionicons.calendar_number_outline), // Adds calendar icon
+              suffixIcon: Icon(Ionicons.calendar_number_outline),
             ),
             onTap: (control) async {
               DateTime? pickedDate = await showDatePicker(
@@ -260,7 +259,6 @@ class ProfileView extends GetView<ProfileController> {
                 value: 'Student',
                 child: Text('Student'),
               ),
-              // Add more options as needed
             ],
           ),
         ],
@@ -314,16 +312,6 @@ class ProfileView extends GetView<ProfileController> {
             formControlName: 'identification_documents.aadhaar_card',
             decoration: const InputDecoration(labelText: 'Aadhaar Card Number'),
           ),
-          // const Gap(20),
-          // ReactiveTextField<String>(
-          //   formControlName: 'identification_documents.passport',
-          //   decoration: const InputDecoration(labelText: 'Passport Number'),
-          // ),
-          // const Gap(20),
-          // ReactiveTextField<String>(
-          //   formControlName: 'identification_documents.driver_license',
-          //   decoration: const InputDecoration(labelText: 'Driver License Number'),
-          // ),
         ],
       ),
     );

@@ -1,14 +1,16 @@
-import 'package:cash_ctrl/app/core/extensions.dart';
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
+import 'package:cash_ctrl/app/core/extensions.dart';
+import 'package:cash_ctrl/app/routes/app_pages.dart';
+
 import 'groups_controller.dart';
 
 class GroupsView extends GetView<GroupsController> {
-  GroupsView({super.key});
+  const GroupsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,6 @@ class GroupsView extends GetView<GroupsController> {
       builder: (controller) => Scaffold(
         floatingActionButton: FloatingActionButton.extended(
           shape: const StadiumBorder(),
-          // onPressed: () async {
-          //   Contact? contact = await _contactPicker.selectContact();
-          //   controller.contacts?.addIf(contact != null, contact!);
-          // },
           backgroundColor: Get.theme.colorScheme.surface,
           foregroundColor: Get.theme.colorScheme.onSurface,
           onPressed: () => Get.toNamed(Routes.NEW_GROUP),
@@ -35,9 +33,9 @@ class GroupsView extends GetView<GroupsController> {
         body: Obx(
           () => ListView.separated(
             itemCount: controller.contacts?.length ?? 0,
-            physics: const ClampingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             itemBuilder: (context, index) {
               return InkWell(
                 splashFactory: InkRipple.splashFactory,

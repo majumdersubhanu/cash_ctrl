@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -31,7 +32,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
       appBar: AppBar(),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        physics: const ClampingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(16),
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         primary: true,
@@ -61,8 +62,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
                       decoration: InputDecoration(
                         labelText: key.capitalizeFirstOfEach,
                         hintText: 'Enter $key',
-                        icon: const Icon(Icons
-                            .text_fields), // example icon, replace with appropriate icons
+                        icon: const Icon(Icons.text_fields),
                       ),
                     ),
                   ],
@@ -257,15 +257,12 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         _upiErrorHandler(snapshot.error.runtimeType),
                         style: header,
-                      ), // Print's text message on screen
+                      ),
                     );
                   }
 
-                  // If we have data then definitely we will have UpiResponse.
-                  // It cannot be null
                   UpiResponse upiResponse = snapshot.data!;
 
-                  // Data in UpiResponse can be null. Check before printing
                   String txnId = upiResponse.transactionId ?? 'N/A';
                   String resCode = upiResponse.responseCode ?? 'N/A';
                   String txnRef = upiResponse.transactionRefId ?? 'N/A';

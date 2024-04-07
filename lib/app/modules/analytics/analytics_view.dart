@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -66,10 +67,6 @@ class AnalyticsView extends GetView<AnalyticsController> {
                       ),
                       legendIconType: LegendIconType.diamond,
                       dataLabelMapper: (data, index) => "${data.value}%",
-                      // explode: controller.monthlyAnalyticsData.length >= 2,
-                      // enableTooltip: true,
-                      // explodeIndex: 0,
-                      // explodeGesture: ActivationMode.singleTap,
                       groupMode: CircularChartGroupMode.value,
                       cornerStyle: CornerStyle.bothFlat,
                     ),
@@ -77,7 +74,6 @@ class AnalyticsView extends GetView<AnalyticsController> {
                 ),
               ),
               const SizedBox(height: 30),
-              // Yearly Expenditure Analytics Chart
               Obx(
                 () => SfCartesianChart(
                   primaryXAxis:

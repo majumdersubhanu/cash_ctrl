@@ -7,7 +7,6 @@ import '../../data/providers/expense_provider.dart';
 class HomeController extends GetxController {
   User? user = FirebaseAuth.instance.currentUser;
 
-  // Use RxList to make the list reactive
   RxList<Expense> expenses = <Expense>[].obs;
 
   final ExpenseProvider provider = ExpenseProvider();
@@ -15,7 +14,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Listen to the stream and update the expenses list on new data
+
     provider.streamLastFiveTransactions().listen((updatedExpenses) {
       expenses.value = updatedExpenses;
     });

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 import '../../core/enums.dart';
@@ -23,7 +23,6 @@ class LendingController extends GetxController {
 
   @override
   void onClose() {
-    // Clean up resources if needed
     scrollController.dispose();
     super.onClose();
   }
@@ -40,21 +39,16 @@ class LendingController extends GetxController {
   Future<void> subscribeToExpenseStreams() async {
     yearlyExpenses.value = await provider.getAllExpenses();
 
-    Logger().f(
-        'Fetched data: ${yearlyExpenses.map((element) => element.transaction?.title ?? 'N/A').toList()}');
-
     applyColumnGroupingDynamic();
   }
 
   Future<void> applyColumnGroupingDynamic() async {
     if (modeFilter.isEmpty && categoryFilter.isNotEmpty) {
       expenseDataSource.value = ExpenseDataSource(expenses: yearlyExpenses)
-        // ..addColumnGroup(ColumnGroup(name: 'Category', sortGroupRows: false))
         ..addColumnGroup(ColumnGroup(name: 'Type', sortGroupRows: false));
     } else if (modeFilter.isNotEmpty && categoryFilter.isEmpty)
       expenseDataSource.value = ExpenseDataSource(expenses: yearlyExpenses)
         ..addColumnGroup(ColumnGroup(name: 'Category', sortGroupRows: false));
-    // ..addColumnGroup(ColumnGroup(name: 'Type', sortGroupRows: false));
     else
       expenseDataSource.value = ExpenseDataSource(expenses: yearlyExpenses);
   }

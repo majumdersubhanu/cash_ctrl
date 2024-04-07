@@ -1,11 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
+
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_editor_plus/image_editor_plus.dart';
 import 'package:image_picker/image_picker.dart';
@@ -41,9 +42,9 @@ class ProfileCompletionController extends GetxController {
       final File editedFile = File(filePath);
       await editedFile.writeAsBytes(editedImage);
       file = editedFile;
-      update(); // Immediately update the UI to reflect the new image
+      update();
 
-      _uploadToFirebase(context); // Proceed with the upload in the background
+      _uploadToFirebase(context);
     }
   }
 

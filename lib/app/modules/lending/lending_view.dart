@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -18,7 +19,7 @@ class LendingView extends GetView<LendingController> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           controller: controller.scrollController,
@@ -59,7 +60,6 @@ class LendingView extends GetView<LendingController> {
                             decoration: BoxDecoration(
                               color: Get.theme.colorScheme.surface,
                               borderRadius: BorderRadius.circular(10),
-                              
                             ),
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
@@ -70,7 +70,6 @@ class LendingView extends GetView<LendingController> {
                                   style: context.titleLarge!.copyWith(
                                     fontWeight: FontWeight.w900,
                                     fontSize: 30,
-                                    // color: Get.theme.colorScheme.primary,
                                   ),
                                 ),
                                 const Spacer(),
@@ -135,8 +134,7 @@ class LendingView extends GetView<LendingController> {
                       GridColumn(
                         columnName: 'Title',
                         label: Container(
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 16.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           alignment: Alignment.centerRight,
                           child: const Text(
                             'Title',
@@ -151,8 +149,8 @@ class LendingView extends GetView<LendingController> {
                           allowSorting: true,
                           allowFiltering: false,
                           label: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               alignment: Alignment.centerLeft,
                               child: const Text(
                                 'Amount',
@@ -163,8 +161,8 @@ class LendingView extends GetView<LendingController> {
                           allowSorting: false,
                           columnName: 'Description',
                           label: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               alignment: Alignment.centerLeft,
                               child: const Text(
                                 'Description',
@@ -174,8 +172,8 @@ class LendingView extends GetView<LendingController> {
                           allowSorting: false,
                           columnName: 'Category',
                           label: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               alignment: Alignment.centerRight,
                               child: const Text(
                                 'Category',
@@ -185,8 +183,8 @@ class LendingView extends GetView<LendingController> {
                           allowSorting: false,
                           columnName: 'Type',
                           label: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               alignment: Alignment.centerRight,
                               child: const Text(
                                 'Type',
@@ -196,8 +194,8 @@ class LendingView extends GetView<LendingController> {
                           columnWidthMode: ColumnWidthMode.fitByColumnName,
                           columnName: 'Time',
                           label: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               alignment: Alignment.centerRight,
                               child: const Text(
                                 'Date',

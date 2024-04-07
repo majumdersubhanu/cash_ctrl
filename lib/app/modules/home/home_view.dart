@@ -1,10 +1,12 @@
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:jiffy/jiffy.dart';
+
+import 'package:cash_ctrl/app/routes/app_pages.dart';
 
 import '../../core/enums.dart';
 import '../../core/extensions.dart';
@@ -21,7 +23,7 @@ class HomeView extends GetView<HomeController> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           primary: true,
@@ -55,7 +57,6 @@ class HomeView extends GetView<HomeController> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      // childAspectRatio: 1.5,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                     ),
@@ -277,7 +278,6 @@ class AnalyticsBox extends StatelessWidget {
             style: context.titleLarge!.copyWith(
               fontWeight: FontWeight.w900,
               fontSize: 30,
-              // color: Get.theme.colorScheme.primary,
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

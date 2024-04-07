@@ -1,15 +1,17 @@
-import 'package:cash_ctrl/app/core/extensions.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import 'package:cash_ctrl/app/core/extensions.dart';
+
 import 'new_group_controller.dart';
 
 class NewGroupView extends GetView<NewGroupController> {
-  NewGroupView({Key? key}) : super(key: key);
+  NewGroupView({super.key});
 
   final FormGroup _formGroup = FormGroup({
     'group_name': FormControl<String>(validators: [Validators.required]),
@@ -19,29 +21,28 @@ class NewGroupView extends GetView<NewGroupController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: const Text('NewGroupView'),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => controller.pickContact(),
-        child: Icon(Ionicons.add),
+        child: const Icon(Ionicons.add),
       ),
       persistentFooterAlignment: AlignmentDirectional.center,
       persistentFooterButtons: [
         TextButton.icon(
           onPressed: () => Get.back(),
-          label: Text(
+          label: const Text(
             'Cancel',
             style: TextStyle(
               color: Colors.red,
             ),
           ),
-          icon: Icon(
+          icon: const Icon(
             Ionicons.close_circle_outline,
             color: Colors.red,
           ),
         ),
-        Spacer(),
+        const Spacer(),
         TextButton.icon(
           onPressed: () {
             _formGroup.valid
@@ -62,7 +63,7 @@ class NewGroupView extends GetView<NewGroupController> {
       ],
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        physics: const ClampingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(16),
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         primary: true,
@@ -100,11 +101,11 @@ class NewGroupView extends GetView<NewGroupController> {
                       'Group name is required',
                 },
               ),
-              Gap(40),
+              const Gap(40),
               Obx(
                 () => ListView.separated(
                   itemCount: controller.contacts?.value.length ?? 0,
-                  physics: const ClampingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return InkWell(
@@ -134,7 +135,7 @@ class NewGroupView extends GetView<NewGroupController> {
                               children: [
                                 Text(
                                     controller.contacts?[index].fullName ?? ''),
-                                Gap(10),
+                                const Gap(10),
                                 Text(controller
                                         .contacts?[index].phoneNumbers?.first ??
                                     ''),
@@ -143,7 +144,7 @@ class NewGroupView extends GetView<NewGroupController> {
                             IconButton(
                                 onPressed: () =>
                                     controller.contacts?.removeAt(index),
-                                icon: Icon(Ionicons.close_outline))
+                                icon: const Icon(Ionicons.close_outline))
                           ],
                         ),
                       ),

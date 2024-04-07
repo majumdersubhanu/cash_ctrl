@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
 
+import 'package:cash_ctrl/app/routes/app_pages.dart';
+
 import '../../core/extensions.dart';
-import 'borrow_controller.dart'; // Make sure this import points to your BorrowController
+import 'borrow_controller.dart';
 
 class BorrowView extends GetView<BorrowController> {
   BorrowView({super.key});
@@ -14,13 +17,11 @@ class BorrowView extends GetView<BorrowController> {
   FormGroup formGroup = FormGroup({
     'amount': FormControl<double>(validators: [Validators.required]),
     'note': FormControl<String>(),
-    // 'upi_id': FormControl<String>(validators: [Validators.required]),
+    'lender_name': FormControl<String>(validators: [Validators.required]),
   });
 
   @override
   Widget build(BuildContext context) {
-    // Define QR code data
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -38,6 +39,19 @@ class BorrowView extends GetView<BorrowController> {
                   ),
                 ),
                 const Gap(40),
+                ReactiveTextField(
+                  formControlName: 'lender_name',
+                  decoration: const InputDecoration(
+                    labelText: 'Lender Name',
+                    hintText: 'Enter the lender\'s name',
+                  ),
+                  keyboardType: TextInputType.name,
+                  validationMessages: {
+                    ValidationMessage.required: (error) =>
+                        'Lender\'s name is required',
+                  },
+                ),
+                const Gap(20),
                 ReactiveTextField(
                   formControlName: 'amount',
                   decoration: const InputDecoration(
@@ -60,24 +74,20 @@ class BorrowView extends GetView<BorrowController> {
                 ElevatedButton(
                   onPressed: () {
                     if (formGroup.valid) {
-                      // Show dialog immediately with loader
                       showDialog(
                         context: context,
-                        barrierDismissible: false, // Make the dialog modal
+                        barrierDismissible: false,
                         builder: (context) {
-                          // Call the profile setup method from the controller
                           controller.fetchAndSetupProfile().then((_) {
-                            // Close the initial dialog if needed and show the new one
                             Navigator.of(context).pop();
                             showDialog(
                               context: context,
                               builder: (context) => Dialog(
-                                child: buildQRCodeDialog(
-                                    context), // Function to build the actual QR Code dialog
+                                child: buildQRCodeDialog(context),
                               ),
                             );
                           });
-                          // Initial dialog with CircularProgressIndicator
+
                           return const Dialog(
                             child: Padding(
                               padding: EdgeInsets.all(20.0),
@@ -108,7 +118,6 @@ class BorrowView extends GetView<BorrowController> {
   }
 
   Widget buildQRCodeDialog(BuildContext context) {
-    // Assuming controller.profile is now populated
     return Container(
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
@@ -162,7 +171,7 @@ class BorrowView extends GetView<BorrowController> {
             loader: const CircularProgressIndicator(),
             qrCodeLoader: const CircularProgressIndicator(),
           ),
-          Gap(20),
+          const Gap(20),
           Text(
             controller.profile?.financialInformation?.upiId ?? 'N/A',
             style: Get.theme.textTheme.titleSmall,
@@ -185,7 +194,10 @@ class BorrowView extends GetView<BorrowController> {
                 label: const Text('Cancel'),
               ),
               TextButton.icon(
-                onPressed: () => true,
+                onPressed: () {
+                  controller.uploadToFirebase(context, formGroup.value);
+                  Get.offAllNamed(Routes.BASE_PAGE);
+                },
                 icon: Icon(
                   Ionicons.checkmark_circle_outline,
                   color: Colors.green.shade700,

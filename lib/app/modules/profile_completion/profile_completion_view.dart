@@ -1,5 +1,6 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -57,7 +58,7 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           primary: true,
@@ -97,7 +98,7 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
 
                                 controller.pickImage(context);
                               },
-                              leading: Icon(Ionicons.image_outline),
+                              leading: const Icon(Ionicons.image_outline),
                             ),
                             ListTile(
                               title: const Text('Upload from camera'),
@@ -108,7 +109,7 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
                                   imageSource: ImageSource.camera,
                                 );
                               },
-                              leading: Icon(Ionicons.camera_outline),
+                              leading: const Icon(Ionicons.camera_outline),
                             ),
                           ],
                         ),
@@ -189,11 +190,10 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
         const Gap(20),
         ReactiveTextField<String>(
           formControlName: 'personal_information.date_of_birth',
-          readOnly: true, // Prevents keyboard from opening
+          readOnly: true,
           decoration: const InputDecoration(
             labelText: 'Date of Birth',
-            suffixIcon:
-                Icon(Ionicons.calendar_number_outline), // Adds calendar icon
+            suffixIcon: Icon(Ionicons.calendar_number_outline),
           ),
           onTap: (control) async {
             DateTime? pickedDate = await showDatePicker(
@@ -203,10 +203,9 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
               lastDate: DateTime.now(),
             );
             if (pickedDate != null) {
-              String formattedDate = Jiffy.parseFromDateTime(pickedDate)
-                  .yMMMd; // Format the date as you need
+              String formattedDate = Jiffy.parseFromDateTime(pickedDate).yMMMd;
               _formGroup.control('personal_information.date_of_birth').value =
-                  formattedDate; // Update the form control value
+                  formattedDate;
             }
           },
         ),
@@ -258,16 +257,6 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
           decoration: const InputDecoration(labelText: 'Company Name'),
         ),
         const Gap(20),
-        // ReactiveTextField<String>(
-        //   formControlName: 'employment_details.industry',
-        //   decoration: const InputDecoration(labelText: 'Industry'),
-        // ),
-        // const Gap(20),
-        // ReactiveTextField<String>(
-        //   formControlName: 'employment_details.employment_status',
-        //   decoration: const InputDecoration(labelText: 'Employment Status'),
-        // ),
-        // const Gap(20),
         ReactiveDropdownField<String>(
           formControlName: 'employment_details.employment_status',
           decoration: const InputDecoration(
@@ -290,7 +279,6 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
               value: 'Student',
               child: Text('Student'),
             ),
-            // Add more options as needed
           ],
         ),
       ],
@@ -338,16 +326,6 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
           formControlName: 'identification_documents.aadhaar_card',
           decoration: const InputDecoration(labelText: 'Aadhaar Card Number'),
         ),
-        // const Gap(20),
-        // ReactiveTextField<String>(
-        //   formControlName: 'identification_documents.passport',
-        //   decoration: const InputDecoration(labelText: 'Passport Number'),
-        // ),
-        // const Gap(20),
-        // ReactiveTextField<String>(
-        //   formControlName: 'identification_documents.driver_license',
-        //   decoration: const InputDecoration(labelText: 'Driver License Number'),
-        // ),
       ],
     );
   }

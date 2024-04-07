@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -23,10 +24,7 @@ class RegisterView extends GetView<RegisterController> {
       ],
     ),
     'phone_number': FormControl<String>(
-      validators: [
-        // Validators.pattern(
-        //     r"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"),
-      ],
+      validators: [],
     ),
     'password': FormControl<String>(
       validators: [
@@ -52,7 +50,7 @@ class RegisterView extends GetView<RegisterController> {
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          physics: const ClampingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           primary: true,

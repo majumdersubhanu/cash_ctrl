@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:ionicons/ionicons.dart';
 
 enum ExpenseCategory {
@@ -78,7 +79,7 @@ IconData getExpenseCategoryIcon(ExpenseCategory expenseCategory) {
     case ExpenseCategory.Food:
       return Ionicons.fast_food_outline;
     case ExpenseCategory.Travel:
-      return Ionicons.train_outline;
+      return Ionicons.airplane_outline;
     case ExpenseCategory.Entertainment:
       return Ionicons.extension_puzzle_outline;
     case ExpenseCategory.Utilities:
@@ -136,7 +137,6 @@ ExpenseCategory getExpenseCategoryValue(String category) {
     case 'Miscellaneous':
       return ExpenseCategory.Miscellaneous;
     default:
-      return ExpenseCategory
-          .Miscellaneous; // Assuming Miscellaneous as a default category
+      return ExpenseCategory.Miscellaneous;
   }
 }

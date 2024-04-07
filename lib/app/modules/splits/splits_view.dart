@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -20,7 +21,7 @@ class SplitsView extends GetView<SplitsController> {
             child: TabBar(
               indicatorSize: TabBarIndicatorSize.tab,
               automaticIndicatorColorAdjustment: true,
-              onTap: controller.changeTabIndex, // Update the tab index on tap
+              onTap: controller.changeTabIndex,
               tabs: const [
                 Tab(
                   icon: Icon(Ionicons.people_circle_outline),
@@ -34,7 +35,7 @@ class SplitsView extends GetView<SplitsController> {
             ),
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             GroupsView(),
             SplitPaymentsView(),

@@ -115,7 +115,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.GROUPS,
-      page: () => GroupsView(),
+      page: () => const GroupsView(),
       binding: GroupsBinding(),
     ),
     GetPage(

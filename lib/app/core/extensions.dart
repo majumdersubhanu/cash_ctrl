@@ -1,5 +1,6 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
@@ -41,8 +42,6 @@ extension BuildContextEntension<T> on BuildContext {
       fontWeight: FontWeight.w700,
       fontSize: 13.0,
       height: 1.23);
-
-  // colors
 
   Color get primaryColor => Theme.of(this).primaryColor;
 
@@ -87,27 +86,11 @@ extension BuildContextEntension<T> on BuildContext {
       SnackBar(
         content: Text(message),
         behavior: SnackBarBehavior.floating,
-        // backgroundColor: primary,
       ),
     );
   }
 
   showAwesomeSnackBar(String title, String message, ContentType contentType) {
-    // final snackBar = SnackBar(
-    //   elevation: 0,
-    //   behavior: SnackBarBehavior.floating,
-    //   backgroundColor: Colors.transparent,
-    //   content: AwesomeSnackbarContent(
-    //     title: title,
-    //     message: message,
-    //     contentType: contentType,
-    //   ),
-    // );
-    //
-    // return ScaffoldMessenger.of(this)
-    //   ..hideCurrentSnackBar()
-    //   ..showSnackBar(snackBar);
-
     return Get.snackbar(title, message,
         snackStyle: SnackStyle.FLOATING,
         isDismissible: true,

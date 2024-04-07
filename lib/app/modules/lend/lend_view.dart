@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../routes/app_pages.dart';
@@ -66,7 +66,6 @@ class _QRViewExampleState extends State<QRViewExample> {
                 borderLength: 30,
                 borderWidth: 10,
                 cutOutSize: Get.width * 0.8,
-                // overlayColor: Get.theme.colorScheme.background,
               ),
             ),
           ),
@@ -90,12 +89,8 @@ class _QRViewExampleState extends State<QRViewExample> {
   validateUPI() async {
     var uri = Uri.parse(result?.code ?? '');
 
-    Logger().f(uri.toString());
-    Logger().d(uri.queryParameters);
-
     if (uri.queryParameters.isNotEmpty) {
       Get.offNamed(Routes.TRANSACTION_DETAILS, arguments: uri.queryParameters);
-      // dispose();
     }
   }
 
