@@ -101,17 +101,6 @@ extension BuildContextEntension<T> on BuildContext {
     );
   }
 
-  Future<bool?> showToast(String message) {
-    return Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: primary,
-      textColor: onPrimary,
-    );
-  }
-
   showWIP() => showThemedSnackbar(
       'WIP', 'Hey there, 👋 we\'re working to get this up ASAP');
 }

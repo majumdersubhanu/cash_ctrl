@@ -74,8 +74,10 @@ class NewExpenseView extends GetView<NewExpenseController> {
                     labelText: 'Payment Type',
                   ),
                   readOnly: true,
-                  onTap: (control) => context.showBottomSheet(
+                  onTap: (control) => Get.bottomSheet(
+                    backgroundColor: Get.theme.colorScheme.background,
                     Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: PaymentMode.values
                           .map((mode) => ListTile(
                                 leading: Icon(getPaymentModeIcon(mode)),
@@ -98,8 +100,10 @@ class NewExpenseView extends GetView<NewExpenseController> {
                     labelText: 'Payment Category',
                   ),
                   readOnly: true,
-                  onTap: (control) => context.showBottomSheet(
+                  onTap: (control) => Get.bottomSheet(
+                    backgroundColor: Get.theme.colorScheme.background,
                     Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: ExpenseCategory.values
                           .map(
                             (category) => ListTile(

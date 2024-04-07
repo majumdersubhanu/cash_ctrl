@@ -44,8 +44,10 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   const Gap(50),
                   GestureDetector(
-                    onTap: () => context.showBottomSheet(
+                    onTap: () => Get.bottomSheet(
+                      backgroundColor: Get.theme.colorScheme.background,
                       Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           ListTile(
                             title: const Text('Upload image from gallery'),

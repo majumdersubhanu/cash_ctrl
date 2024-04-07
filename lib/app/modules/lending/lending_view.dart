@@ -93,7 +93,10 @@ class LendingView extends GetView<LendingController> {
                     ),
                   ),
                   TextButton(
-                      onPressed: () => context.showBottomSheet(Column(
+                      onPressed: () => Get.bottomSheet(
+                          backgroundColor: Get.theme.colorScheme.background,
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               ListTile(
                                 title: const Text('Export to Excel'),

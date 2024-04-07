@@ -86,8 +86,10 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
                   init: ProfileCompletionController(),
                   builder: (controller) {
                     return GestureDetector(
-                      onTap: () => context.showBottomSheet(
+                      onTap: () => Get.bottomSheet(
+                        backgroundColor: Get.theme.colorScheme.background,
                         Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             ListTile(
                               title: const Text('Upload Image from gallery'),
