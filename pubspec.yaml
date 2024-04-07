@@ -1,0 +1,60 @@
+name: cash_ctrl
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.6
+  get: 4.6.6
+  gap: any
+  reactive_forms: any
+  google_fonts: any
+  fluttertoast: any
+  awesome_snackbar_content: any
+  salomon_bottom_bar: any
+  jiffy: any
+  syncfusion_flutter_charts: any
+  syncfusion_flutter_datagrid: any
+  image_picker: any
+  image_editor_plus: any
+  path_provider: any
+  firebase_core: any
+  firebase_storage: any
+  cloud_firestore: any
+  transparent_image: ^2.0.1
+  firebase_core_desktop: any
+  firebase_app_check: any
+  flutter_native_splash: ^2.4.0
+  firebase_auth: ^4.10.1
+  logger: ^2.2.0
+  sliding_clipped_nav_bar: any
+  syncfusion_flutter_datagrid_export: ^25.1.37
+  open_file: ^3.3.2
+  syncfusion_flutter_barcodes: ^25.1.37
+  pretty_qr_code: any
+  qr_code_scanner: ^1.0.1
+  upi_payment_qrcode_generator: ^1.4.0
+  url_launcher: ^6.2.5
+  upi_india: ^3.0.1
+  ionicons: any
+  random_avatar: 0.0.8
+  flutter_native_contact_picker: 0.0.6
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  build_runner: ^2.4.9
+  flutter_lints: ^3.0.2
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  assets: 
+    - assets\ic_launcher.png
+  uses-material-design: true
+
+get_cli: 
+  sub_folder: false
+

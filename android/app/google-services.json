@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1059044138606",
+    "project_id": "cash-ctrl-official-7d879",
+    "storage_bucket": "cash-ctrl-official-7d879.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059044138606:android:e7015c2c163a453a29507f",
+        "android_client_info": {
+          "package_name": "com.example.cash_ctrl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRBPdfXMC4tHV0YcwgS7HVe7-AjV2tMoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

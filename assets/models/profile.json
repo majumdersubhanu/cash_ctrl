@@ -1,0 +1,36 @@
+{
+  "personal_information": {
+    "full_name": "",
+    "date_of_birth": "",
+    "gender": "",
+    "contact_information": {
+      "email": "",
+      "phone_number": ""
+    },
+    "address": {
+      "current": ""
+    },
+    "nationality": ""
+  },
+  "employment_details": {
+    "job_title": "",
+    "company_name": "",
+    "industry": "",
+    "employment_status": "",
+    "monthly_income": ""
+  },
+  "financial_information": {
+    "bank_account_details": {
+      "account_number": "",
+      "ifsc_code": "",
+      "bank_name": ""
+    },
+    "upi_id": ""
+  },
+  "identification_documents": {
+    "pan_card": "",
+    "aadhaar_card": "",
+    "passport": "",
+    "driver_license": ""
+  }
+}

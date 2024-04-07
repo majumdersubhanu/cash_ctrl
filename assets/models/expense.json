@@ -1,0 +1,11 @@
+{
+  "createdAt": "UTC+5:30",
+  "transaction": {
+    "amount": 15000,
+    "description": null,
+    "paymentCategory": "Investment",
+    "paymentType": "Card",
+    "title": "inventory update"
+  },
+  "user": "1Ve1mnJtnO52223cH9SKxHrFHN2"
+}

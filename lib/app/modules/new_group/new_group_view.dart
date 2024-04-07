@@ -1,0 +1,162 @@
+import 'package:cash_ctrl/app/core/extensions.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+
+import 'new_group_controller.dart';
+
+class NewGroupView extends GetView<NewGroupController> {
+  NewGroupView({Key? key}) : super(key: key);
+
+  final FormGroup _formGroup = FormGroup({
+    'group_name': FormControl<String>(validators: [Validators.required]),
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // title: const Text('NewGroupView'),
+        centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => controller.pickContact(),
+        child: Icon(Ionicons.add),
+      ),
+      persistentFooterAlignment: AlignmentDirectional.center,
+      persistentFooterButtons: [
+        TextButton.icon(
+          onPressed: () => Get.back(),
+          label: Text(
+            'Cancel',
+            style: TextStyle(
+              color: Colors.red,
+            ),
+          ),
+          icon: Icon(
+            Ionicons.close_circle_outline,
+            color: Colors.red,
+          ),
+        ),
+        Spacer(),
+        TextButton.icon(
+          onPressed: () {
+            _formGroup.valid
+                ? controller.createGroup(context)
+                : _formGroup.markAllAsTouched();
+          },
+          label: Text(
+            'Create group',
+            style: TextStyle(
+              color: Colors.green.shade700,
+            ),
+          ),
+          icon: Icon(
+            Ionicons.create_outline,
+            color: Colors.green.shade700,
+          ),
+        ),
+      ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: const ClampingScrollPhysics(),
+        padding: const EdgeInsets.all(16),
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        primary: true,
+        dragStartBehavior: DragStartBehavior.down,
+        child: ReactiveForm(
+          formGroup: _formGroup,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            verticalDirection: VerticalDirection.down,
+            textDirection: TextDirection.ltr,
+            textBaseline: TextBaseline.ideographic,
+            children: [
+              Text(
+                'New Group',
+                style: context.displaySmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              const Gap(20),
+              Text(
+                'Add the group members one by one',
+                style: context.titleMedium?.copyWith(),
+              ),
+              const Gap(40),
+              ReactiveTextField<String>(
+                formControlName: 'group_name',
+                decoration: const InputDecoration(
+                  labelText: 'Group Name',
+                  hintText: 'Enter the group name',
+                ),
+                validationMessages: {
+                  ValidationMessage.required: (error) =>
+                      'Group name is required',
+                },
+              ),
+              Gap(40),
+              Obx(
+                () => ListView.separated(
+                  itemCount: controller.contacts?.value.length ?? 0,
+                  physics: const ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      splashFactory: InkRipple.splashFactory,
+                      splashColor: Get.theme.colorScheme.secondary,
+                      overlayColor: MaterialStatePropertyAll(
+                          Get.theme.colorScheme.secondary),
+                      onTap: () => context.showWIP(),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Get.theme.colorScheme.surface,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.fromBorderSide(
+                            BorderSide(
+                              color: Get.theme.colorScheme.onSurface,
+                            ),
+                          ),
+                        ),
+                        padding: const EdgeInsets.all(16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          textBaseline: TextBaseline.ideographic,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    controller.contacts?[index].fullName ?? ''),
+                                Gap(10),
+                                Text(controller
+                                        .contacts?[index].phoneNumbers?.first ??
+                                    ''),
+                              ],
+                            ),
+                            IconButton(
+                                onPressed: () =>
+                                    controller.contacts?.removeAt(index),
+                                icon: Icon(Ionicons.close_outline))
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Gap(10),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
