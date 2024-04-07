@@ -42,14 +42,14 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
               children: [
                 Text(
                   'Reset',
-                  style: context.displayMedium?.copyWith(
+                  style: Get.theme.textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Gap(10),
                 Text(
                   'Don\'t worry, we\'ll send you a password reset link',
-                  style: context.bodyLarge,
+                  style: Get.theme.textTheme.bodyLarge,
                 ),
                 const Gap(50),
                 ReactiveTextField(

@@ -65,14 +65,14 @@ class RegisterView extends GetView<RegisterController> {
               children: [
                 Text(
                   'Register',
-                  style: context.displayMedium?.copyWith(
+                  style: Get.theme.textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Gap(10),
                 Text(
                   'Hey there 👋, welcome to CashCtrl',
-                  style: context.bodyLarge,
+                  style: Get.theme.textTheme.bodyLarge,
                 ),
                 const Gap(50),
                 ReactiveTextField(

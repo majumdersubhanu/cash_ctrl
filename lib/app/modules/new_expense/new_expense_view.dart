@@ -39,14 +39,14 @@ class NewExpenseView extends GetView<NewExpenseController> {
               children: [
                 Text(
                   'Add Expense',
-                  style: context.displayMedium?.copyWith(
+                  style: Get.theme.textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Gap(10),
                 Text(
                   'Fill in the details below to add a new expense.',
-                  style: context.bodyLarge,
+                  style: Get.theme.textTheme.bodyLarge,
                 ),
                 const Gap(50),
                 ReactiveTextField<String>(

@@ -32,7 +32,7 @@ class BorrowView extends GetView<BorrowController> {
               children: [
                 Text(
                   'Borrowing',
-                  style: context.displaySmall?.copyWith(
+                  style: Get.theme.textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w900,
                   ),
                 ),

@@ -38,14 +38,14 @@ class HomeView extends GetView<HomeController> {
               children: [
                 Text(
                   'Dashboard',
-                  style: context.displaySmall?.copyWith(
+                  style: Get.theme.textTheme.displaySmall?.copyWith(
                     fontWeight: FontWeight.w900,
                   ),
                 ),
                 const Gap(40),
                 Text(
                   'Hey 👋, ${controller.user?.displayName?.split(' ').first}',
-                  style: context.titleLarge?.copyWith(
+                  style: Get.theme.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -119,7 +119,7 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     Text(
                       'Recent Expenses',
-                      style: context.titleLarge?.copyWith(
+                      style: Get.theme.textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -180,8 +180,9 @@ class HomeView extends GetView<HomeController> {
                                       controller.expenses[index].transaction
                                               ?.title ??
                                           'N/A',
-                                      style: context.titleMedium?.copyWith(
-                                          fontWeight: FontWeight.w900),
+                                      style: Get.theme.textTheme.titleMedium
+                                          ?.copyWith(
+                                              fontWeight: FontWeight.w900),
                                     ),
                                     Text(Jiffy.parseFromDateTime(controller
                                             .expenses[index].createdAt!
@@ -191,7 +192,7 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 Text(
                                   '${controller.expenses[index].transaction?.amount}',
-                                  style: context.titleMedium
+                                  style: Get.theme.textTheme.titleMedium
                                       ?.copyWith(fontWeight: FontWeight.w900),
                                 ),
                                 Icon(
@@ -273,7 +274,7 @@ class AnalyticsBox extends StatelessWidget {
           const Spacer(),
           Text(
             info,
-            style: context.titleLarge!.copyWith(
+            style: Get.theme.textTheme.titleLarge!.copyWith(
               fontWeight: FontWeight.w900,
               fontSize: 30,
             ),
@@ -283,7 +284,7 @@ class AnalyticsBox extends StatelessWidget {
           const Spacer(),
           Text(
             label,
-            style: context.bodyLarge,
+            style: Get.theme.textTheme.bodyLarge,
           ),
         ],
       ),

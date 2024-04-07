@@ -72,14 +72,14 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
               children: [
                 Text(
                   'Profile',
-                  style: context.displayMedium?.copyWith(
+                  style: Get.theme.textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Gap(10),
                 Text(
                   "We're almost there, just a bit more!",
-                  style: context.bodyLarge,
+                  style: Get.theme.textTheme.bodyLarge,
                 ),
                 const Gap(50),
                 GetBuilder<ProfileCompletionController>(
@@ -129,32 +129,32 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
                 const Gap(40),
                 Text(
                   "Personal Information",
-                  style:
-                      context.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                  style: Get.theme.textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(20),
                 _buildPersonalInfoSection(context),
                 const Gap(40),
                 Text(
                   "Employment Details",
-                  style:
-                      context.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                  style: Get.theme.textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(20),
                 _buildEmploymentDetailsSection(context),
                 const Gap(40),
                 Text(
                   "Financial Information",
-                  style:
-                      context.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                  style: Get.theme.textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(20),
                 _buildFinancialInformationSection(context),
                 const Gap(40),
                 Text(
                   "Identification",
-                  style:
-                      context.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                  style: Get.theme.textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const Gap(20),
                 _buildIdentificationDocumentsSection(context),

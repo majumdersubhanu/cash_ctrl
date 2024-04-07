@@ -38,7 +38,7 @@ class ProfileView extends GetView<ProfileController> {
                 children: [
                   Text(
                     'Profile',
-                    style: context.displaySmall?.copyWith(
+                    style: Get.theme.textTheme.displaySmall?.copyWith(
                       fontWeight: FontWeight.w900,
                     ),
                   ),
@@ -99,7 +99,7 @@ class ProfileView extends GetView<ProfileController> {
                   const Gap(40),
                   Text(
                     "Personal Information",
-                    style: context.titleLarge
+                    style: Get.theme.textTheme.titleLarge
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(20),
@@ -107,7 +107,7 @@ class ProfileView extends GetView<ProfileController> {
                   const Gap(40),
                   Text(
                     "Employment Details",
-                    style: context.titleLarge
+                    style: Get.theme.textTheme.titleLarge
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(20),
@@ -115,7 +115,7 @@ class ProfileView extends GetView<ProfileController> {
                   const Gap(40),
                   Text(
                     "Financial Information",
-                    style: context.titleLarge
+                    style: Get.theme.textTheme.titleLarge
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(20),
@@ -123,7 +123,7 @@ class ProfileView extends GetView<ProfileController> {
                   const Gap(40),
                   Text(
                     "Identification",
-                    style: context.titleLarge
+                    style: Get.theme.textTheme.titleLarge
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const Gap(20),

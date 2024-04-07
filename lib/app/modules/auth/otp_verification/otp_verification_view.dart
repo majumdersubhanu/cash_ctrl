@@ -40,14 +40,14 @@ class OtpVerificationView extends GetView<OtpVerificationController> {
               children: [
                 Text(
                   'Otp Verification',
-                  style: context.displayMedium?.copyWith(
+                  style: Get.theme.textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Gap(10),
                 Text(
                   'Enter the OTP sent via sms',
-                  style: context.bodyLarge,
+                  style: Get.theme.textTheme.bodyLarge,
                 ),
                 const Gap(50),
                 ReactiveTextField(

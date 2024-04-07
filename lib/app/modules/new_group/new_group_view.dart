@@ -78,14 +78,14 @@ class NewGroupView extends GetView<NewGroupController> {
             children: [
               Text(
                 'New Group',
-                style: context.displaySmall?.copyWith(
+                style: Get.theme.textTheme.displaySmall?.copyWith(
                   fontWeight: FontWeight.w900,
                 ),
               ),
               const Gap(20),
               Text(
                 'Add the group members one by one',
-                style: context.titleMedium?.copyWith(),
+                style: Get.theme.textTheme.titleMedium?.copyWith(),
               ),
               const Gap(40),
               ReactiveTextField<String>(

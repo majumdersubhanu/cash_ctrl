@@ -47,7 +47,7 @@ class TransactionDetailsView extends GetView<TransactionDetailsController> {
             children: [
               Text(
                 'Details',
-                style: context.displayMedium?.copyWith(
+                style: Get.theme.textTheme.displayMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),

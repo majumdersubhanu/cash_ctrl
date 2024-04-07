@@ -55,14 +55,14 @@ class LoginView extends GetView<LoginController> {
               children: [
                 Text(
                   'Login',
-                  style: context.displayMedium?.copyWith(
+                  style: Get.theme.textTheme.displayMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const Gap(10),
                 Text(
                   'Hey there 👋, welcome back',
-                  style: context.bodyLarge,
+                  style: Get.theme.textTheme.bodyLarge,
                 ),
                 const Gap(50),
                 ReactiveTextField(

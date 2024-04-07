@@ -32,14 +32,14 @@ class LendingView extends GetView<LendingController> {
             children: [
               Text(
                 'Transactions',
-                style: context.displaySmall?.copyWith(
+                style: Get.theme.textTheme.displaySmall?.copyWith(
                   fontWeight: FontWeight.w900,
                 ),
               ),
               const Gap(40),
               Text(
                 'Hey 👋, here\'s your latest stats',
-                style: context.titleLarge?.copyWith(
+                style: Get.theme.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -52,35 +52,37 @@ class LendingView extends GetView<LendingController> {
                 ),
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                children:
-                    ['Total money you\'ve lent', 'Total money you\'ve borrowed']
-                        .map(
-                          (e) => Container(
-                            decoration: BoxDecoration(
-                              color: Get.theme.colorScheme.surface,
-                              borderRadius: BorderRadius.circular(10),
+                children: [
+                  'Total money you\'ve lent',
+                  'Total money you\'ve borrowed'
+                ]
+                    .map(
+                      (e) => Container(
+                        decoration: BoxDecoration(
+                          color: Get.theme.colorScheme.surface,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            const Spacer(),
+                            Text(
+                              '350',
+                              style: Get.theme.textTheme.titleLarge!.copyWith(
+                                fontWeight: FontWeight.w900,
+                                fontSize: 30,
+                              ),
                             ),
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              children: [
-                                const Spacer(),
-                                Text(
-                                  '350',
-                                  style: context.titleLarge!.copyWith(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 30,
-                                  ),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  e,
-                                  style: context.bodyLarge,
-                                ),
-                              ],
+                            const Spacer(),
+                            Text(
+                              e,
+                              style: Get.theme.textTheme.bodyLarge,
                             ),
-                          ),
-                        )
-                        .toList(),
+                          ],
+                        ),
+                      ),
+                    )
+                    .toList(),
               ),
               const Gap(40),
               Row(
@@ -88,7 +90,7 @@ class LendingView extends GetView<LendingController> {
                 children: [
                   Text(
                     'All Time Expenses',
-                    style: context.titleLarge?.copyWith(
+                    style: Get.theme.textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
