@@ -1,12 +1,12 @@
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
 
-import '../../core/extensions.dart';
+import '../../routes/app_pages.dart';
 import 'borrow_controller.dart';
 
 class BorrowView extends GetView<BorrowController> {
@@ -76,15 +76,17 @@ class BorrowView extends GetView<BorrowController> {
                         context: context,
                         barrierDismissible: false,
                         builder: (context) {
-                          controller.fetchAndSetupProfile().then((_) {
-                            Navigator.of(context).pop();
-                            showDialog(
-                              context: context,
-                              builder: (context) => Dialog(
-                                child: buildQRCodeDialog(context),
-                              ),
-                            );
-                          });
+                          controller.fetchAndSetupProfile().then(
+                            (value) {
+                              Navigator.of(context).pop();
+                              return showDialog(
+                                context: context,
+                                builder: (context) => Dialog(
+                                  child: buildQRCodeDialog(context),
+                                ),
+                              );
+                            },
+                          );
 
                           return const Dialog(
                             child: Padding(
@@ -93,7 +95,7 @@ class BorrowView extends GetView<BorrowController> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   CircularProgressIndicator(),
-                                  SizedBox(width: 20),
+                                  Gap(20),
                                   Text('Setting up profile...'),
                                 ],
                               ),

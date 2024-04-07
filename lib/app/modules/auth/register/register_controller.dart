@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../core/extensions.dart';
@@ -29,7 +30,8 @@ class RegisterController extends GetxController {
       )
           .then((value) async {
         if (value.user != null) {
-          value.user?.updateDisplayName(formValue['display_name'].toString());
+          await value.user
+              ?.updateDisplayName(formValue['display_name'].toString());
 
           value.user?.sendEmailVerification();
 
@@ -38,7 +40,7 @@ class RegisterController extends GetxController {
                 arguments: formValue['phone_number'].toString());
           } else {
             context.showSnackbar('Hooray!',
-                'Welcome to Cash Ctrl, ${value.user?.displayName.toString()}');
+                'Welcome to Cash Ctrl, ${formValue['display_name'].toString()}');
 
             Get.offAllNamed(Routes.PROFILE_COMPLETION);
           }
@@ -46,8 +48,7 @@ class RegisterController extends GetxController {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        context.showSnackbar(
-            'Oh oh!', 'The password provided is too weak.');
+        context.showSnackbar('Oh oh!', 'The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         context.showSnackbar(
             'Oh oh!', 'An account already exists for that email, please login');

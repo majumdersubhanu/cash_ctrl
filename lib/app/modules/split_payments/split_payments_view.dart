@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -12,6 +13,7 @@ class SplitPaymentsView extends GetView<SplitPaymentsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'New Split',
         shape: const StadiumBorder(),
         backgroundColor: Get.theme.colorScheme.surface,
         foregroundColor: Get.theme.colorScheme.onSurface,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -37,13 +38,6 @@ class LendingView extends GetView<LendingController> {
                 ),
               ),
               const Gap(40),
-              Text(
-                'Hey 👋, here\'s your latest stats',
-                style: Get.theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Gap(20),
               GridView(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -130,12 +124,13 @@ class LendingView extends GetView<LendingController> {
                     source: controller.expenseDataSource.value,
                     gridLinesVisibility: GridLinesVisibility.horizontal,
                     columnWidthMode: ColumnWidthMode.lastColumnFill,
-                    selectionMode: SelectionMode.multiple,
+                    // selectionMode: SelectionMode.multiple,
                     headerGridLinesVisibility: GridLinesVisibility.horizontal,
                     showHorizontalScrollbar: true,
                     allowSorting: true,
                     shrinkWrapRows: true,
                     shrinkWrapColumns: false,
+                    isScrollbarAlwaysShown: true,
                     columns: [
                       GridColumn(
                         columnName: 'Title',

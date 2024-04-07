@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -6,11 +7,6 @@ import 'package:upi_india/upi_india.dart';
 
 import '../../core/extensions.dart';
 import 'transaction_details_controller.dart';
-
-extension TextCapitalization on String {
-  get capitalizeFirstOfEach =>
-      split(" ").map((e) => e.capitalizeFirst).join(" ");
-}
 
 class TransactionDetailsView extends GetView<TransactionDetailsController> {
   const TransactionDetailsView({super.key});

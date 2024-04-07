@@ -1,11 +1,13 @@
-import 'package:cash_ctrl/app/core/extensions.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
+import '../../core/extensions.dart';
 import '../../data/models/profile_model.dart';
 import '../../data/providers/profile_provider.dart';
+import '../../routes/app_pages.dart';
 
 class BorrowController extends GetxController {
   User? user = FirebaseAuth.instance.currentUser;
@@ -16,7 +18,7 @@ class BorrowController extends GetxController {
 
   Future<void> fetchAndSetupProfile() async {
     String uid = FirebaseAuth.instance.currentUser?.uid ?? '';
-    await provider.getProfile(uid);
+    profile = await provider.getProfile(uid);
   }
 
   Future<void> uploadToFirebase(
@@ -29,9 +31,15 @@ class BorrowController extends GetxController {
           .collection('borrowing-data')
           .add(borrowMap as Map<String, dynamic>);
       context.showSnackbar('Success!', 'Borrowed money successfully');
+
+      Get.offAllNamed(Routes.LENDING);
     } catch (e) {
       context.showSnackbar(
           'Error!', 'Failed to borrow money. Please try again.');
+      Get.back(
+        canPop: true,
+        closeOverlays: true,
+      );
     }
   }
 }

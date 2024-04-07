@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../core/extensions.dart';
 import 'otp_verification_controller.dart';
 
 class OtpVerificationView extends GetView<OtpVerificationController> {

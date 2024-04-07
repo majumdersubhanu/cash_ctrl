@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -60,13 +61,12 @@ class _QRViewExampleState extends State<QRViewExample> {
               cameraFacing: CameraFacing.back,
               onQRViewCreated: _onQRViewCreated,
               overlay: QrScannerOverlayShape(
-                borderColor: Get.theme.colorScheme.primary,
-                borderRadius: 4,
-                borderLength: 30,
-                borderWidth: 10,
-                cutOutSize: Get.width * 0.8,
-                overlayColor: Colors.black.withOpacity(0.8)
-              ),
+                  borderColor: Get.theme.colorScheme.primary,
+                  borderRadius: 4,
+                  borderLength: 30,
+                  borderWidth: 10,
+                  cutOutSize: Get.width * 0.8,
+                  overlayColor: Colors.black.withOpacity(0.8)),
             ),
           ),
           const Gap(20),

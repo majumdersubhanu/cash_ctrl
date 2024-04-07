@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../routes/app_pages.dart';
@@ -14,8 +15,8 @@ class OtpVerificationController extends GetxController {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (PhoneAuthCredential credential) async {
-        await auth
-            .signInWithCredential(credential)
+        await auth.currentUser
+            ?.linkWithCredential(credential)
             .then((value) => Get.offAllNamed(Routes.BASE_PAGE));
       },
       verificationFailed: (FirebaseAuthException e) {},
@@ -26,8 +27,8 @@ class OtpVerificationController extends GetxController {
           smsCode: smsCode,
         );
 
-        await auth
-            .signInWithCredential(credential)
+        await auth.currentUser
+            ?.linkWithCredential(credential)
             .then((value) => Get.offAllNamed(Routes.BASE_PAGE));
       },
       codeAutoRetrievalTimeout: (String verificationId) {},

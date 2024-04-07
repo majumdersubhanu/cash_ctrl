@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,7 +9,6 @@ import 'package:jiffy/jiffy.dart';
 import 'package:random_avatar/random_avatar.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../core/extensions.dart';
 import '../../routes/app_pages.dart';
 import 'profile_controller.dart';
 

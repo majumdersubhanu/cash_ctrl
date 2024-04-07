@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../core/extensions.dart';
@@ -31,12 +32,10 @@ class ExpenseProvider {
 
       context.showSnackbar('Success!', 'Expense added successfully');
 
-
       //TODO: find a better method: maybe implement streams for all the data
       Get.find<AnalyticsController>().subscribeToExpenseStreams();
       Get.find<LendingController>().subscribeToExpenseStreams();
       Get.find<HomeController>().analyticsInfo();
-
     } catch (e) {
       context.showSnackbar(
           'Error!', 'Failed to add expense. Please try again.');

@@ -1,9 +1,11 @@
-import 'package:cash_ctrl/app/core/extensions.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
+
+import '../../core/extensions.dart';
 
 class NewGroupController extends GetxController {
   RxList<Contact>? contacts = <Contact>[].obs;

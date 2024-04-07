@@ -1,9 +1,10 @@
-import 'package:cash_ctrl/app/core/themes.dart';
+import 'package:flutter/material.dart';
+
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'app/core/themes.dart';
 import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
 
@@ -25,7 +26,7 @@ Future<void> main() async {
       initialRoute: Routes.LOGIN,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: atlassianThemeDataLight(),
       darkTheme: atlassianThemeDataDark(),
     ),

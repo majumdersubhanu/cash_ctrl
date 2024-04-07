@@ -1,6 +1,6 @@
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -8,6 +8,7 @@ import 'package:jiffy/jiffy.dart';
 
 import '../../core/enums.dart';
 import '../../core/extensions.dart';
+import '../../routes/app_pages.dart';
 import '../base_page/base_page_controller.dart';
 import '../lending/lending_controller.dart';
 import 'home_controller.dart';
@@ -307,11 +308,11 @@ class DashboardAnalytics extends StatelessWidget {
       builder: (controller) => Obx(
         () {
           // Determine if data is still loading based on the controller state
-          final isLoading = controller.expenses.isEmpty ||
-              controller.currentMonthTotal.value == 0.0 ||
-              controller.currentYearTotal.value == 0.0 ||
-              controller.allTimeTotal.value == 0.0 ||
-              controller.currMaxCategory.value == "N/A";
+          final isLoading = controller.expenses.isNotEmpty &&
+              (controller.currentMonthTotal.value == 0.0 ||
+                  controller.currentYearTotal.value == 0.0 ||
+                  controller.allTimeTotal.value == 0.0 ||
+                  controller.currMaxCategory.value == "N/A");
 
           final List<DashboardAnalyticsData> analyticsData = [
             DashboardAnalyticsData(

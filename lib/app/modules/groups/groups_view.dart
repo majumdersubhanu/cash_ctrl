@@ -1,10 +1,11 @@
-import 'package:cash_ctrl/app/core/extensions.dart';
-import 'package:cash_ctrl/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../../core/extensions.dart';
+import '../../routes/app_pages.dart';
 import 'groups_controller.dart';
 
 class GroupsView extends GetView<GroupsController> {
@@ -16,6 +17,7 @@ class GroupsView extends GetView<GroupsController> {
       init: GroupsController(),
       builder: (controller) => Scaffold(
         floatingActionButton: FloatingActionButton.extended(
+          heroTag: 'Add Group',
           shape: const StadiumBorder(),
           backgroundColor: Get.theme.colorScheme.surface,
           foregroundColor: Get.theme.colorScheme.onSurface,

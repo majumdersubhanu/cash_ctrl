@@ -1,11 +1,12 @@
-import 'package:cash_ctrl/app/core/extensions.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../core/extensions.dart';
 import 'new_group_controller.dart';
 
 class NewGroupView extends GetView<NewGroupController> {

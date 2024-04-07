@@ -1,11 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart' hide Transaction;
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../core/enums.dart';
-import '../../core/extensions.dart';
 import '../../data/models/expense_model.dart';
 import 'new_expense_controller.dart';
 
@@ -58,6 +58,7 @@ class NewExpenseView extends GetView<NewExpenseController> {
                   validationMessages: {
                     ValidationMessage.required: (error) => 'Title is required',
                   },
+                  textCapitalization: TextCapitalization.sentences,
                 ),
                 const Gap(20),
                 ReactiveTextField<String>(
