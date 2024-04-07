@@ -20,6 +20,8 @@ import '../modules/lend/lend_binding.dart';
 import '../modules/lend/lend_view.dart';
 import '../modules/lending/lending_binding.dart';
 import '../modules/lending/lending_view.dart';
+import '../modules/new_category/new_category_binding.dart';
+import '../modules/new_category/new_category_view.dart';
 import '../modules/new_expense/new_expense_binding.dart';
 import '../modules/new_expense/new_expense_view.dart';
 import '../modules/new_group/new_group_binding.dart';
@@ -127,6 +129,11 @@ class AppPages {
       name: _Paths.NEW_GROUP,
       page: () => NewGroupView(),
       binding: NewGroupBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEW_CATEGORY,
+      page: () => const NewCategoryView(),
+      binding: NewCategoryBinding(),
     ),
   ];
 }

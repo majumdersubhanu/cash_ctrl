@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../analytics/analytics_binding.dart';
@@ -15,6 +17,8 @@ class BasePageController extends GetxController {
 
   var currentIndex = 0.obs;
 
+  PageController pageController = PageController(initialPage: 0);
+
   @override
   void onInit() {
     super.onInit();
@@ -27,5 +31,7 @@ class BasePageController extends GetxController {
 
   void changePage(int index) {
     currentIndex.value = index;
+
+    pageController.jumpToPage(index);
   }
 }

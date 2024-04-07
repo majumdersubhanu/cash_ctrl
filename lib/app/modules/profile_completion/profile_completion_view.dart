@@ -299,6 +299,12 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
             ),
           ],
         ),
+        const Gap(20),
+        ReactiveTextField<String>(
+          formControlName: 'employment_details.monthly_income',
+          decoration: const InputDecoration(labelText: 'Monthly Income'),
+          keyboardType: TextInputType.number,
+        ),
       ],
     );
   }

@@ -39,7 +39,7 @@ class BasePageView extends GetView<BasePageController> {
                           NetworkImage(controller.user?.photoURL ?? ""),
                     ),
                   )
-                : RandomAvatar('saytoonz', height: 20, width: 20),
+                : RandomAvatar('saytoonz', height: 40, width: 40),
           ),
           const Gap(8),
         ],
@@ -51,16 +51,15 @@ class BasePageView extends GetView<BasePageController> {
         onPressed: () => _handleFabPressed(),
         child: const Icon(Ionicons.add),
       ),
-      body: Obx(
-        () => IndexedStack(
-          index: controller.currentIndex.value,
-          children: const [
-            HomeView(),
-            AnalyticsView(),
-            SplitsView(),
-            LendingView(),
-          ],
-        ),
+      body: PageView(
+        controller: controller.pageController,
+        onPageChanged: (index) => controller.changePage(index),
+        children: const [
+          HomeView(),
+          AnalyticsView(),
+          SplitsView(),
+          LendingView(),
+        ],
       ),
       bottomNavigationBar: const BottomNavBar(),
     );
