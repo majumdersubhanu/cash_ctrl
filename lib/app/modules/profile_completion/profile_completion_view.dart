@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,8 +15,8 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
 
   final FormGroup _formGroup = FormGroup({
     'personal_information': FormGroup({
-      'full_name': FormControl<String>(),
-      'date_of_birth': FormControl<String>(),
+      'full_name': FormControl<String>(validators: [Validators.required]),
+      'date_of_birth': FormControl<String>(validators: [Validators.required]),
       'gender': FormControl<String>(),
       'contact_information': FormGroup({
         'email': FormControl<String>(),
@@ -33,19 +32,19 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
       'company_name': FormControl<String>(),
       'industry': FormControl<String>(),
       'employment_status': FormControl<String>(),
-      'monthly_income': FormControl<String>(),
+      'monthly_income': FormControl<String>(validators: [Validators.required]),
     }),
     'financial_information': FormGroup({
       'bank_account_details': FormGroup({
-        'account_number': FormControl<String>(),
-        'ifsc_code': FormControl<String>(),
-        'bank_name': FormControl<String>(),
+        'account_number': FormControl<String>(validators: [Validators.required]),
+        'ifsc_code': FormControl<String>(validators: [Validators.required]),
+        'bank_name': FormControl<String>(validators: [Validators.required]),
       }),
-      'upi_id': FormControl<String>(),
+      'upi_id': FormControl<String>(validators: [Validators.required]),
     }),
     'identification_documents': FormGroup({
-      'pan_card': FormControl<String>(),
-      'aadhaar_card': FormControl<String>(),
+      'pan_card': FormControl<String>(validators: [Validators.required]),
+      'aadhaar_card': FormControl<String>(validators: [Validators.required]),
       'passport': FormControl<String>(),
       'driver_license': FormControl<String>(),
     }),

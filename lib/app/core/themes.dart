@@ -110,10 +110,8 @@ ThemeData atlassianThemeDataDark() {
   const Color primaryColor = Color(0xFF4C9AFF);
   const Color secondaryColor = Color(0xFF0052CC);
   const Color errorColor = Color(0xFFE53935);
-  // Adjusted background and surface colors
   const Color surfaceColor = Color(0xFF253858);
   const Color backgroundColor = Color(0xFF121212);
-  // Lighter text color for better contrast
   const Color textColor = Color(0xFFF0F0F0);
 
   TextTheme textTheme = GoogleFonts.latoTextTheme()
@@ -133,18 +131,18 @@ ThemeData atlassianThemeDataDark() {
   ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: Colors.white,
     backgroundColor: primaryColor,
-    textStyle: TextStyle(fontSize: 18, color: textColor),
+    textStyle: const TextStyle(fontSize: 18, color: textColor),
   );
 
   ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(
     foregroundColor: textColor,
-    side: BorderSide(color: primaryColor, width: 2),
-    textStyle: TextStyle(fontSize: 18, color: textColor),
+    side: const BorderSide(color: primaryColor, width: 2),
+    textStyle: const TextStyle(fontSize: 18, color: textColor),
   );
 
   ButtonStyle textButtonStyle = TextButton.styleFrom(
     foregroundColor: primaryColor,
-    textStyle: TextStyle(fontSize: 18, color: textColor),
+    textStyle: const TextStyle(fontSize: 18, color: textColor),
   );
 
   AppBarTheme appBarTheme = AppBarTheme(
@@ -154,16 +152,16 @@ ThemeData atlassianThemeDataDark() {
   );
 
   InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
-    border: OutlineInputBorder(
+    border: const OutlineInputBorder(
       borderSide: BorderSide(color: primaryColor),
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(color: primaryColor.withOpacity(0.5)),
     ),
-    focusedBorder: OutlineInputBorder(
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: primaryColor, width: 2),
     ),
-    labelStyle: TextStyle(color: textColor),
+    labelStyle: const TextStyle(color: textColor),
     hintStyle: TextStyle(color: textColor.withOpacity(0.6)),
     fillColor: backgroundColor,
     filled: true,
@@ -176,7 +174,7 @@ ThemeData atlassianThemeDataDark() {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
   );
 
-  SnackBarThemeData snackBarTheme = SnackBarThemeData(
+  SnackBarThemeData snackBarTheme = const SnackBarThemeData(
     backgroundColor: primaryColor,
     contentTextStyle: TextStyle(color: Colors.white, fontSize: 16),
   );
@@ -187,7 +185,7 @@ ThemeData atlassianThemeDataDark() {
     contentTextStyle: textTheme.bodyLarge,
   );
 
-  MaterialBannerThemeData bannerTheme = MaterialBannerThemeData(
+  MaterialBannerThemeData bannerTheme = const MaterialBannerThemeData(
     backgroundColor: secondaryColor,
     contentTextStyle: TextStyle(color: Colors.white, fontSize: 16),
   );

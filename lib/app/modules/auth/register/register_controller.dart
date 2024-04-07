@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../../../core/extensions.dart';
 import '../../../routes/app_pages.dart';
@@ -10,8 +11,8 @@ class RegisterController extends GetxController {
   RxBool visible = true.obs;
 
   final visibilityIconMap = const {
-    true: Icons.visibility_off,
-    false: Icons.visibility,
+    true: Ionicons.eye_off_outline,
+    false: Ionicons.eye_outline,
   };
 
   toggleVisibility() {
