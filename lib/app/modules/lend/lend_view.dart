@@ -65,6 +65,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                 borderLength: 30,
                 borderWidth: 10,
                 cutOutSize: Get.width * 0.8,
+                overlayColor: Colors.black.withOpacity(0.8)
               ),
             ),
           ),

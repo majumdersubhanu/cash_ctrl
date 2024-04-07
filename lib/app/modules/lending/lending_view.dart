@@ -134,6 +134,8 @@ class LendingView extends GetView<LendingController> {
                     headerGridLinesVisibility: GridLinesVisibility.horizontal,
                     showHorizontalScrollbar: true,
                     allowSorting: true,
+                    shrinkWrapRows: true,
+                    shrinkWrapColumns: false,
                     columns: [
                       GridColumn(
                         columnName: 'Title',

@@ -184,6 +184,10 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
         ReactiveTextField<String>(
           formControlName: 'personal_information.full_name',
           decoration: const InputDecoration(labelText: 'Full Name'),
+          autofillHints: const [
+            AutofillHints.name,
+          ],
+          keyboardType: TextInputType.name,
         ),
         const Gap(20),
         ReactiveTextField<String>(
@@ -213,6 +217,7 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
           decoration: const InputDecoration(
             labelText: 'Gender',
           ),
+          icon: const Icon(Ionicons.chevron_down_outline),
           items: const [
             DropdownMenuItem(
               value: 'Male',
@@ -232,11 +237,18 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
         ReactiveTextField<String>(
           formControlName: 'personal_information.address.current',
           decoration: const InputDecoration(labelText: 'Current Address'),
+          autofillHints: const [
+            AutofillHints.location,
+          ],
+          keyboardType: TextInputType.streetAddress,
         ),
         const Gap(20),
         ReactiveTextField<String>(
           formControlName: 'personal_information.nationality',
           decoration: const InputDecoration(labelText: 'Nationality'),
+          autofillHints: const [
+            AutofillHints.countryName,
+          ],
         ),
       ],
     );
@@ -248,11 +260,18 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
         ReactiveTextField<String>(
           formControlName: 'employment_details.job_title',
           decoration: const InputDecoration(labelText: 'Job Title'),
+          autofillHints: const [
+            AutofillHints.jobTitle,
+          ],
         ),
         const Gap(20),
         ReactiveTextField<String>(
           formControlName: 'employment_details.company_name',
           decoration: const InputDecoration(labelText: 'Company Name'),
+          autofillHints: const [
+            AutofillHints.organizationName,
+          ],
+          keyboardType: TextInputType.name,
         ),
         const Gap(20),
         ReactiveDropdownField<String>(
@@ -260,6 +279,7 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
           decoration: const InputDecoration(
             labelText: 'Employment Status',
           ),
+          icon: const Icon(Ionicons.chevron_down_outline),
           items: const [
             DropdownMenuItem(
               value: 'Employed',
@@ -290,6 +310,8 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
           formControlName:
               'financial_information.bank_account_details.account_number',
           decoration: const InputDecoration(labelText: 'Account Number'),
+          keyboardType: const TextInputType.numberWithOptions(
+              decimal: false, signed: false),
         ),
         const Gap(20),
         ReactiveTextField<String>(
@@ -302,11 +324,13 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
           formControlName:
               'financial_information.bank_account_details.bank_name',
           decoration: const InputDecoration(labelText: 'Bank Name'),
+          keyboardType: TextInputType.name,
         ),
         const Gap(20),
         ReactiveTextField<String>(
           formControlName: 'financial_information.upi_id',
           decoration: const InputDecoration(labelText: 'UPI ID'),
+          keyboardType: TextInputType.emailAddress,
         ),
       ],
     );
@@ -318,11 +342,16 @@ class ProfileCompletionView extends GetView<ProfileCompletionController> {
         ReactiveTextField<String>(
           formControlName: 'identification_documents.pan_card',
           decoration: const InputDecoration(labelText: 'PAN Card Number'),
+          keyboardType: TextInputType.name,
+          inputFormatters: [
+            UpperCaseTextFormatter(),
+          ],
         ),
         const Gap(20),
         ReactiveTextField<String>(
           formControlName: 'identification_documents.aadhaar_card',
           decoration: const InputDecoration(labelText: 'Aadhaar Card Number'),
+          keyboardType: TextInputType.number,
         ),
       ],
     );

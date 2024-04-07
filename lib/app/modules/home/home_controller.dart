@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../data/models/expense_model.dart';
@@ -15,11 +16,13 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
 
-    provider.getLatestTransactionsStream().listen((updatedExpenses) {
-      expenses.value = updatedExpenses;
-    });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      provider.getLatestTransactionsStream().listen((updatedExpenses) {
+        expenses.value = updatedExpenses;
+      });
 
-    analyticsInfo();
+      analyticsInfo();
+    });
   }
 
   RxDouble currentMonthTotal = 0.0.obs;

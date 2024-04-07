@@ -18,6 +18,12 @@ class BasePageView extends GetView<BasePageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          'Hey 👋, ${controller.user?.displayName?.split(' ').first}',
+          style: Get.theme.textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         forceMaterialTransparency: true,
         actions: [
           GestureDetector(
@@ -41,42 +47,9 @@ class BasePageView extends GetView<BasePageController> {
       floatingActionButton: FloatingActionButton.small(
         backgroundColor: Get.theme.colorScheme.surface,
         foregroundColor: Get.theme.colorScheme.onSurface,
-        onPressed: () => Get.bottomSheet(
-          backgroundColor: Get.theme.colorScheme.surface,
-          isDismissible: true,
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              ListTile(
-                leading: const Icon(Ionicons.paper_plane_outline),
-                title: const Text('New Expense'),
-                onTap: () {
-                  Get.back();
-                  Get.toNamed(Routes.NEW_EXPENSE);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Ionicons.scan_outline),
-                title: const Text('Lend Money'),
-                onTap: () {
-                  Get.back();
-                  Get.toNamed(Routes.LEND);
-                },
-              ),
-              ListTile(
-                leading: const Icon(Ionicons.qr_code_outline),
-                title: const Text('Borrow Money'),
-                onTap: () {
-                  Get.back();
-                  Get.toNamed(Routes.BORROW);
-                },
-              ),
-            ],
-          ),
-        ),
+        onPressed: () => _handleFabPressed(),
         child: const Icon(Ionicons.add),
       ),
-      extendBody: false,
       body: Obx(
         () => IndexedStack(
           index: controller.currentIndex.value,
@@ -88,53 +61,115 @@ class BasePageView extends GetView<BasePageController> {
           ],
         ),
       ),
-      bottomNavigationBar: buildNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 
-  buildNavBar() {
-    return Obx(
-      () => NavigationBar(
-        backgroundColor: Get.theme.colorScheme.surface,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        indicatorColor: Get.theme.colorScheme.primary,
-        selectedIndex: controller.currentIndex.value,
-        surfaceTintColor: Get.theme.colorScheme.surface,
-        onDestinationSelected: (value) => controller.changePage(value),
-        destinations: [
-          NavigationDestination(
-            icon: const Icon(Ionicons.cube_outline),
-            label: 'Dashboard',
-            selectedIcon: Icon(
-              Ionicons.cube,
-              color: Get.theme.colorScheme.surface,
-            ),
+  _handleFabPressed() {
+    Get.bottomSheet(
+      backgroundColor: Get.theme.colorScheme.surface,
+      isDismissible: true,
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          ListTile(
+            leading: const Icon(Ionicons.paper_plane_outline),
+            title: const Text('Add new expense'),
+            onTap: () {
+              Get.back();
+              Get.toNamed(Routes.NEW_EXPENSE);
+            },
           ),
-          NavigationDestination(
-            icon: const Icon(Ionicons.pie_chart_outline),
-            label: 'Analytics',
-            selectedIcon: Icon(
-              Ionicons.pie_chart,
-              color: Get.theme.colorScheme.surface,
-            ),
+          ListTile(
+            leading: const Icon(Ionicons.scan_outline),
+            title: const Text('Lend money'),
+            onTap: () {
+              Get.back();
+              Get.toNamed(Routes.LEND);
+            },
           ),
-          NavigationDestination(
-            icon: const Icon(Ionicons.color_wand_outline),
-            label: 'Split',
-            selectedIcon: Icon(
-              Ionicons.color_wand,
-              color: Get.theme.colorScheme.surface,
-            ),
+          ListTile(
+            leading: const Icon(Ionicons.qr_code_outline),
+            title: const Text('Borrow money'),
+            onTap: () {
+              Get.back();
+              Get.toNamed(Routes.BORROW);
+            },
           ),
-          NavigationDestination(
-            icon: const Icon(Ionicons.wallet_outline),
-            label: 'Transactions',
-            selectedIcon: Icon(
-              Ionicons.wallet,
-              color: Get.theme.colorScheme.surface,
-            ),
+          ListTile(
+            leading: const Icon(Ionicons.pricetag_outline),
+            title: const Text('Create new budget'),
+            onTap: () {
+              Get.back();
+              // Get.toNamed(Routes.BORROW);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Ionicons.earth_outline),
+            title: const Text('Add new category'),
+            onTap: () {
+              Get.back();
+              // Get.toNamed(Routes.BORROW);
+            },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BottomNavBar extends StatelessWidget {
+  const BottomNavBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder(
+      init: BasePageController(),
+      builder: (controller) => Obx(
+        () => NavigationBar(
+          backgroundColor: Get.theme.colorScheme.surface,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+          indicatorColor: Get.theme.colorScheme.primary,
+          selectedIndex: controller.currentIndex.value,
+          surfaceTintColor: Get.theme.colorScheme.surface,
+          onDestinationSelected: (value) => controller.changePage(value),
+          destinations: [
+            NavigationDestination(
+              icon: const Icon(Ionicons.cube_outline),
+              label: 'Dashboard',
+              selectedIcon: Icon(
+                Ionicons.cube,
+                color: Get.theme.colorScheme.surface,
+              ),
+            ),
+            NavigationDestination(
+              icon: const Icon(Ionicons.pie_chart_outline),
+              label: 'Analytics',
+              selectedIcon: Icon(
+                Ionicons.pie_chart,
+                color: Get.theme.colorScheme.surface,
+              ),
+            ),
+            NavigationDestination(
+              icon: const Icon(Ionicons.color_wand_outline),
+              label: 'Split',
+              selectedIcon: Icon(
+                Ionicons.color_wand,
+                color: Get.theme.colorScheme.surface,
+              ),
+            ),
+            NavigationDestination(
+              icon: const Icon(Ionicons.wallet_outline),
+              label: 'Transactions',
+              selectedIcon: Icon(
+                Ionicons.wallet,
+                color: Get.theme.colorScheme.surface,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
