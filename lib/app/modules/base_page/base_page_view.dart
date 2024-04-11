@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -109,7 +108,70 @@ class BasePageView extends GetView<BasePageController> {
             title: const Text('Add new category'),
             onTap: () {
               Get.back();
-              // Get.toNamed(Routes.BORROW);
+              showCustomDialog();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void showCustomDialog() {
+    final Rx<IconData?> selectedIcon = Rx<IconData?>(null);
+    final TextEditingController textEditingController = TextEditingController();
+
+    Get.dialog(
+      AlertDialog(
+        title: const Text("Add New Category"),
+        surfaceTintColor: Get.theme.colorScheme.surfaceVariant,
+        titleTextStyle: Get.theme.textTheme.titleLarge,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: textEditingController,
+              decoration: const InputDecoration(hintText: "Category name"),
+            ),
+            const SizedBox(height: 20),
+            Obx(() => Wrap(
+                  spacing: 10,
+                  children: [
+                    for (var icon in [
+                      Ionicons.accessibility_outline,
+                      Ionicons.alert_circle_outline,
+                      Ionicons.american_football_outline,
+                      Ionicons.aperture_outline,
+                      Ionicons.bag_handle_outline,
+                      Ionicons.attach_outline,
+                      Ionicons.balloon_outline,
+                      Ionicons.beer_outline,
+                      Ionicons.boat_outline,
+                      Ionicons.car_sport_outline,
+                      Ionicons.diamond_outline,
+                    ])
+                      ChoiceChip(
+                        label: Icon(icon),
+                        shape: StadiumBorder(),
+                        selected: selectedIcon.value == icon,
+                        onSelected: (bool selected) {
+                          selectedIcon.value = selected ? icon : null;
+                        },
+                      ),
+                  ],
+                )),
+          ],
+        ),
+        actions: [
+          TextButton(
+            child: const Text("Cancel"),
+            onPressed: () => Get.back(),
+          ),
+          TextButton(
+            child: const Text("Add"),
+            onPressed: () {
+              //TODO: add to hive database
+              Get.back();
             },
           ),
         ],

@@ -21,7 +21,6 @@ abstract class Routes {
   static const SPLIT_PAYMENTS = _Paths.SPLIT_PAYMENTS;
   static const TRANSACTION_DETAILS = _Paths.TRANSACTION_DETAILS;
   static const NEW_GROUP = _Paths.NEW_GROUP;
-  static const NEW_CATEGORY = _Paths.NEW_CATEGORY;
 }
 
 abstract class _Paths {
@@ -45,5 +44,4 @@ abstract class _Paths {
   static const SPLIT_PAYMENTS = '/split-payments';
   static const TRANSACTION_DETAILS = '/transaction-details';
   static const NEW_GROUP = '/new-group';
-  static const NEW_CATEGORY = '/new-category';
 }
