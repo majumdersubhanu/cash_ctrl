@@ -194,8 +194,8 @@ class BottomNavBar extends StatelessWidget {
           backgroundColor: Get.theme.colorScheme.surface,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           indicatorColor: Get.theme.colorScheme.primary,
-          selectedIndex: controller.currentIndex.value,
           surfaceTintColor: Get.theme.colorScheme.surface,
+          selectedIndex: controller.currentIndex.value,
           onDestinationSelected: (value) => controller.changePage(value),
           destinations: [
             NavigationDestination(

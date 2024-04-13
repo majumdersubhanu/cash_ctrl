@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -23,6 +22,8 @@ class NewGroupView extends GetView<NewGroupController> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Get.theme.colorScheme.surface,
+        foregroundColor: Get.theme.colorScheme.onSurface,
         onPressed: () => controller.pickContact(),
         child: const Icon(Ionicons.add),
       ),
@@ -117,11 +118,11 @@ class NewGroupView extends GetView<NewGroupController> {
                         decoration: BoxDecoration(
                           color: Get.theme.colorScheme.surface,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.fromBorderSide(
-                            BorderSide(
-                              color: Get.theme.colorScheme.onSurface,
-                            ),
-                          ),
+                          // border: Border.fromBorderSide(
+                          //   BorderSide(
+                          //     color: Get.theme.colorScheme.onSurface,
+                          //   ),
+                          // ),
                         ),
                         padding: const EdgeInsets.all(16),
                         child: Row(
