@@ -11,7 +11,7 @@ Future<void> main() async {
   configureDependencies();
   await setupLocator();
 
-  getIt<AppPrefs>().clear();
+  // getIt<AppPrefs>().clear();
 
   runApp(const MyApp());
 }

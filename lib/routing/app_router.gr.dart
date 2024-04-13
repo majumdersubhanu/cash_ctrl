@@ -87,6 +87,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: RegisterPage(key: args.key),
       );
     },
+    TransactionDetails.name: (routeData) {
+      final args = routeData.argsAs<TransactionDetailsArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: TransactionDetails(
+          key: args.key,
+          arguments: args.arguments,
+        ),
+      );
+    },
     TransactionsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -291,6 +301,44 @@ class RegisterRouteArgs {
   @override
   String toString() {
     return 'RegisterRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [TransactionDetails]
+class TransactionDetails extends PageRouteInfo<TransactionDetailsArgs> {
+  TransactionDetails({
+    Key? key,
+    required Map<String, dynamic> arguments,
+    List<PageRouteInfo>? children,
+  }) : super(
+          TransactionDetails.name,
+          args: TransactionDetailsArgs(
+            key: key,
+            arguments: arguments,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TransactionDetails';
+
+  static const PageInfo<TransactionDetailsArgs> page =
+      PageInfo<TransactionDetailsArgs>(name);
+}
+
+class TransactionDetailsArgs {
+  const TransactionDetailsArgs({
+    this.key,
+    required this.arguments,
+  });
+
+  final Key? key;
+
+  final Map<String, dynamic> arguments;
+
+  @override
+  String toString() {
+    return 'TransactionDetailsArgs{key: $key, arguments: $arguments}';
   }
 }
 

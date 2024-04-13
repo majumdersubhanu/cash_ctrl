@@ -83,27 +83,30 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
                         context: context,
                         barrierDismissible: false,
                         builder: (context) {
-                          logger.f(
-                              getIt<AppPrefs>().currentUser.getValue()?.upiId ??
-                                  '');
+                          logger.f(getIt<AppPrefs>()
+                                  .authUser
+                                  .getValue()
+                                  ?.user
+                                  .upiId ??
+                              '');
 
                           return Dialog(
                             child: buildQRCodeDialog(context),
                           );
 
-                          // return const Dialog(
-                          //   child: Padding(
-                          //     padding: EdgeInsets.all(20.0),
-                          //     child: Row(
-                          //       mainAxisSize: MainAxisSize.min,
-                          //       children: [
-                          //         CircularProgressIndicator(),
-                          //         Gap(20),
-                          //         Text('Setting up profile...'),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // );
+                          return const Dialog(
+                            child: Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  CircularProgressIndicator(),
+                                  Gap(20),
+                                  Text('Setting up profile...'),
+                                ],
+                              ),
+                            ),
+                          );
                         },
                       );
                     } else {
@@ -121,96 +124,102 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
   }
 
   Widget buildQRCodeDialog(BuildContext context) {
+    logger.f(getIt<AppPrefs>().authUser.getValue()!.user.upiId!);
     return Container(
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceVariant,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              CircleAvatar(
-                radius: 25,
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                child: CircleAvatar(
-                  radius: 23,
-                  backgroundImage: NetworkImage(
-                      getIt<AppPrefs>().currentUser.getValue()?.profilePic ??
-                          ''),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  child: CircleAvatar(
+                    radius: 23,
+                    backgroundImage: NetworkImage(getIt<AppPrefs>()
+                            .authUser
+                            .getValue()
+                            ?.user
+                            .profilePic ??
+                        ''),
+                  ),
                 ),
-              ),
-              const Gap(20),
-              Text(
-                getIt<AppPrefs>().currentUser.getValue()?.fullName ?? 'N/A',
-                style: context.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
+                const Gap(20),
+                Text(
+                  getIt<AppPrefs>().authUser.getValue()?.user.username ?? 'N/A',
+                  style: context.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis),
                 ),
-              ),
-            ],
-          ),
-          const Gap(30),
-          UPIPaymentQRCode(
-            upiDetails: UPIDetails(
-              upiID: getIt<AppPrefs>().currentUser.getValue()?.upiId ?? '',
-              payeeName:
-                  getIt<AppPrefs>().currentUser.getValue()?.fullName ?? '',
-              amount: double.parse(formGroup.value['amount'].toString()),
-              currencyCode: 'INR',
-              transactionNote: formGroup.control('note').value ?? '',
+              ],
             ),
-            embeddedImagePath: 'assets/ic_launcher.png',
-            size: 250,
-            dataModuleStyle: QrDataModuleStyle(
-              color: Theme.of(context).colorScheme.primary,
-              dataModuleShape: QrDataModuleShape.circle,
-            ),
-            eyeStyle: QrEyeStyle(
-              color: Theme.of(context).colorScheme.primary,
-              eyeShape: QrEyeShape.square,
-            ),
-            upiQRErrorCorrectLevel: UPIQRErrorCorrectLevel.medium,
-            loader: const CircularProgressIndicator(),
-            qrCodeLoader: const CircularProgressIndicator(),
-          ),
-          const Gap(20),
-          Text(
-            getIt<AppPrefs>().currentUser.getValue()?.upiId ?? 'N/A',
-            style: context.textTheme.titleSmall,
-          ),
-          const Gap(5),
-          Text(
-            'Scan this QR code to lend me money',
-            style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
-          ),
-          const Gap(20),
-          ButtonBar(
-            alignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton.icon(
-                onPressed: () => context.maybePop(),
-                icon: Icon(
-                  Ionicons.close_circle_outline,
-                  color: Colors.red.shade700,
-                ),
-                label: const Text('Cancel'),
+            const Gap(30),
+            UPIPaymentQRCode(
+              upiDetails: UPIDetails(
+                upiID: getIt<AppPrefs>().authUser.getValue()!.user.upiId!,
+                payeeName:
+                    getIt<AppPrefs>().authUser.getValue()?.user.fullName ?? '',
+                amount: double.parse(formGroup.value['amount'].toString()),
+                currencyCode: 'INR',
+                transactionNote: formGroup.control('note').value ?? '',
               ),
-              TextButton.icon(
-                onPressed: () {
-                  context.replaceRoute(BaseRoute());
-                },
-                icon: Icon(
-                  Ionicons.checkmark_circle_outline,
-                  color: Colors.green.shade700,
-                ),
-                label: const Text('Successful'),
+              embeddedImagePath: 'assets/icon/icon.png',
+              size: 250,
+              dataModuleStyle: QrDataModuleStyle(
+                color: Theme.of(context).colorScheme.primary,
+                dataModuleShape: QrDataModuleShape.circle,
               ),
-            ],
-          )
-        ],
+              eyeStyle: QrEyeStyle(
+                color: Theme.of(context).colorScheme.primary,
+                eyeShape: QrEyeShape.square,
+              ),
+              upiQRErrorCorrectLevel: UPIQRErrorCorrectLevel.medium,
+              loader: const CircularProgressIndicator(),
+              qrCodeLoader: const CircularProgressIndicator(),
+            ),
+            const Gap(20),
+            Text(
+              getIt<AppPrefs>().authUser.getValue()?.user.upiId ?? 'N/A',
+              style: context.textTheme.titleSmall,
+            ),
+            const Gap(5),
+            Text(
+              'Scan this QR code to lend me money',
+              style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
+            ),
+            const Gap(20),
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton.icon(
+                  onPressed: () => context.maybePop(),
+                  icon: Icon(
+                    Ionicons.close_circle_outline,
+                    color: Colors.red.shade700,
+                  ),
+                  label: const Text('Cancel'),
+                ),
+                TextButton.icon(
+                  onPressed: () {
+                    context.replaceRoute(BaseRoute());
+                  },
+                  icon: Icon(
+                    Ionicons.checkmark_circle_outline,
+                    color: Colors.green.shade700,
+                  ),
+                  label: const Text('Successful'),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
