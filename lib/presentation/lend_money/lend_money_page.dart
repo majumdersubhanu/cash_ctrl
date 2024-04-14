@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:cash_ctrl/core/extensions.dart';
+import 'package:cash_ctrl/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -79,8 +80,8 @@ class _LendMoneyPageState extends State<LendMoneyPage> {
     var uri = Uri.parse(result?.code ?? '');
 
     if (uri.queryParameters.isNotEmpty) {
-      //TODO: fuck this shit
-      // context.replaceRoute(Routes.TRANSACTION_DETAILS, arguments: uri.queryParameters);
+      context.replaceRoute(
+          TransactionDetailsRoute(arguments: uri.queryParameters));
     }
   }
 

@@ -124,7 +124,7 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
   }
 
   Widget buildQRCodeDialog(BuildContext context) {
-    logger.f(getIt<AppPrefs>().authUser.getValue()!.user.upiId!);
+    logger.f(getIt<AppPrefs>().authUser.getValue()!.user.upiId);
     return Container(
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
@@ -163,7 +163,8 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
             const Gap(30),
             UPIPaymentQRCode(
               upiDetails: UPIDetails(
-                upiID: getIt<AppPrefs>().authUser.getValue()!.user.upiId!,
+                upiID:
+                    getIt<AppPrefs>().authUser.getValue()!.user.upiId ?? 'N/A',
                 payeeName:
                     getIt<AppPrefs>().authUser.getValue()?.user.fullName ?? '',
                 amount: double.parse(formGroup.value['amount'].toString()),

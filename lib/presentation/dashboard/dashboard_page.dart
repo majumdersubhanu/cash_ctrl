@@ -3,6 +3,8 @@ import 'package:cash_ctrl/application/analytics/analytics_provider.dart';
 import 'package:cash_ctrl/application/transaction/transaction_provider.dart';
 import 'package:cash_ctrl/core/enums.dart';
 import 'package:cash_ctrl/core/extensions.dart';
+import 'package:cash_ctrl/core/prefs.dart';
+import 'package:cash_ctrl/injection/injection.dart';
 import 'package:cash_ctrl/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -18,28 +20,37 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          padding: EdgeInsets.all(16),
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             textBaseline: TextBaseline.ideographic,
             children: [
-              DashboardAnalytics(),
-              Gap(20),
+              Text(
+                'Hey 👋, ${getIt<AppPrefs>().authUser.getValue()?.user.username}',
+                style: context.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Gap(30),
+              const DashboardAnalytics(),
+              const Gap(20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   OutlinedButton(
-                      onPressed: () => context.pushRoute(BorrowMoneyRoute()),
-                      child: Text("Lend Money")),
+                      onPressed: () =>
+                          context.pushRoute(const LendMoneyRoute()),
+                      child: const Text("Lend Money")),
                   OutlinedButton(
-                      onPressed: () => context.pushRoute(BorrowMoneyRoute()),
-                      child: Text("Borrow Money")),
+                      onPressed: () =>
+                          context.pushRoute(const BorrowMoneyRoute()),
+                      child: const Text("Borrow Money")),
                 ],
               ),
-              Gap(20),
-              RecentTransactions(),
+              const Gap(20),
+              const RecentTransactions(),
             ],
           ),
         ),

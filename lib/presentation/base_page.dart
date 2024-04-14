@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cash_ctrl/core/extensions.dart';
 import 'package:cash_ctrl/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:random_avatar/random_avatar.dart';
 
 @RoutePage()
 class BasePage extends StatefulWidget {
@@ -28,6 +30,17 @@ class _BasePageState extends State<BasePage> {
       lazyLoad: true,
       appBarBuilder: (context, tabsRouter) => AppBar(
         title: Text(tabsRouter.current.name.split("Route").first),
+        titleTextStyle: context.textTheme.headlineMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: GestureDetector(
+                onTap: () => context.pushRoute(ProfileRoute()),
+                child: RandomAvatar('saytoonz', height: 35, width: 35)),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.pushRoute(const NewExpenseRoute()),

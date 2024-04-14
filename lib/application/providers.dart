@@ -1,5 +1,6 @@
 import 'package:cash_ctrl/application/analytics/analytics_provider.dart';
 import 'package:cash_ctrl/application/auth/auth_provider.dart';
+import 'package:cash_ctrl/application/profile_completion/profile_completion_provider.dart';
 import 'package:cash_ctrl/application/transaction/transaction_provider.dart';
 import 'package:cash_ctrl/application/user/user_provider.dart';
 import 'package:cash_ctrl/injection/injection.dart';
@@ -20,6 +21,10 @@ final List providers = [
   ),
   ChangeNotifierProvider<TransactionProvider>(
     create: (_) => getIt<TransactionProvider>(),
+    lazy: false,
+  ),
+  ChangeNotifierProvider<ProfileCompletionProvider>(
+    create: (_) => getIt<ProfileCompletionProvider>(),
     lazy: false,
   ),
 ];

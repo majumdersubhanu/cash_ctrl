@@ -41,7 +41,7 @@ dependencies:
   flutter_expandable_fab: any
   syncfusion_flutter_charts: any
   syncfusion_flutter_datagrid: any
-  qr_code_scanner: any
+  qr_code_scanner: 1.0.0
   upi_india: any
 
 dev_dependencies:

@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cash_ctrl/application/profile_completion/profile_completion_provider.dart';
 import 'package:cash_ctrl/application/user/user_provider.dart';
 import 'package:cash_ctrl/core/extensions.dart';
 import 'package:cash_ctrl/shared/widgets/notification_message.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
@@ -64,46 +66,23 @@ class ProfileCompletionPage extends StatelessWidget {
                   style: context.textTheme.bodyLarge,
                 ),
                 const Gap(50),
-                // GestureDetector(
-                //   onTap: () => Get.bottomSheet(
-                //     backgroundColor: context.colorScheme.background,
-                //     Column(
-                //       mainAxisSize: MainAxisSize.min,
-                //       children: [
-                //         ListTile(
-                //           title: const Text('Upload Image from gallery'),
-                //           onTap: () {
-                //             Get.back();
-                //
-                //             controller.pickImage(context);
-                //           },
-                //           leading: const Icon(Ionicons.image_outline),
-                //         ),
-                //         ListTile(
-                //           title: const Text('Upload from camera'),
-                //           onTap: () {
-                //             Get.back();
-                //             controller.pickImage(
-                //               context,
-                //               imageSource: ImageSource.camera,
-                //             );
-                //           },
-                //           leading: const Icon(Ionicons.camera_outline),
-                //         ),
-                //       ],
-                //     ),
-                //     isScrollControlled: true,
-                //   ),
-                //   child: controller.file != null
-                //       ? CircleAvatar(
-                //     radius: 100,
-                //     backgroundImage: controller.file != null
-                //         ? FileImage(controller.file!)
-                //         : null,
-                //   )
-                //       : RandomAvatar('saytoonz', height: 100, width: 100),
-                // ),
-                RandomAvatar('saytoonz', height: 100, width: 100),
+                Consumer<ProfileCompletionProvider>(
+                  builder: (BuildContext context,
+                          ProfileCompletionProvider profileCompletionStatus,
+                          Widget? child) =>
+                      GestureDetector(
+                    onTap: () => showImagePicker(context),
+                    child: profileCompletionStatus.file != null
+                        ? CircleAvatar(
+                            radius: 100,
+                            backgroundImage:
+                                profileCompletionStatus.file != null
+                                    ? FileImage(profileCompletionStatus.file!)
+                                    : null,
+                          )
+                        : RandomAvatar('saytoonz', height: 100, width: 100),
+                  ),
+                ),
                 const Gap(40),
                 Text(
                   "Personal Information",
@@ -153,6 +132,40 @@ class ProfileCompletionPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void showImagePicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          color: Theme.of(context).colorScheme.background,
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Ionicons.image_outline),
+                title: const Text('Upload Image from gallery'),
+                onTap: () {
+                  Navigator.of(context).pop(); // Dismiss the bottom sheet first
+                  context.read<ProfileCompletionProvider>().pickImage(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Ionicons.camera_outline),
+                title: const Text('Upload from camera'),
+                onTap: () {
+                  Navigator.of(context).pop(); // Dismiss the bottom sheet first
+                  context
+                      .read<ProfileCompletionProvider>()
+                      .pickImage(context, imageSource: ImageSource.camera);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+      isScrollControlled: true,
     );
   }
 
