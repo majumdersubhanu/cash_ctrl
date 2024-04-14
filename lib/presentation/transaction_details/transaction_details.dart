@@ -1,4 +1,4 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cash_ctrl/core/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -6,16 +6,16 @@ import 'package:reactive_forms/reactive_forms.dart';
 import 'package:upi_india/upi_india.dart';
 
 @RoutePage()
-class TransactionDetails extends StatefulWidget {
+class TransactionDetailsPage extends StatefulWidget {
   final Map<String, dynamic> arguments;
 
-  const TransactionDetails({super.key, required this.arguments});
+  const TransactionDetailsPage({super.key, required this.arguments});
 
   @override
-  State<TransactionDetails> createState() => _TransactionDetailsState();
+  State<TransactionDetailsPage> createState() => _TransactionDetailsPageState();
 }
 
-class _TransactionDetailsState extends State<TransactionDetails> {
+class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
   @override
   Widget build(BuildContext context) {
     FormGroup formGroup = FormGroup(

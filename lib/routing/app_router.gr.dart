@@ -87,11 +87,11 @@ abstract class _$AppRouter extends RootStackRouter {
         child: RegisterPage(key: args.key),
       );
     },
-    TransactionDetails.name: (routeData) {
-      final args = routeData.argsAs<TransactionDetailsArgs>();
+    TransactionDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<TransactionDetailsRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: TransactionDetails(
+        child: TransactionDetailsPage(
           key: args.key,
           arguments: args.arguments,
         ),
@@ -305,29 +305,30 @@ class RegisterRouteArgs {
 }
 
 /// generated route for
-/// [TransactionDetails]
-class TransactionDetails extends PageRouteInfo<TransactionDetailsArgs> {
-  TransactionDetails({
+/// [TransactionDetailsPage]
+class TransactionDetailsRoute
+    extends PageRouteInfo<TransactionDetailsRouteArgs> {
+  TransactionDetailsRoute({
     Key? key,
     required Map<String, dynamic> arguments,
     List<PageRouteInfo>? children,
   }) : super(
-          TransactionDetails.name,
-          args: TransactionDetailsArgs(
+          TransactionDetailsRoute.name,
+          args: TransactionDetailsRouteArgs(
             key: key,
             arguments: arguments,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'TransactionDetails';
+  static const String name = 'TransactionDetailsRoute';
 
-  static const PageInfo<TransactionDetailsArgs> page =
-      PageInfo<TransactionDetailsArgs>(name);
+  static const PageInfo<TransactionDetailsRouteArgs> page =
+      PageInfo<TransactionDetailsRouteArgs>(name);
 }
 
-class TransactionDetailsArgs {
-  const TransactionDetailsArgs({
+class TransactionDetailsRouteArgs {
+  const TransactionDetailsRouteArgs({
     this.key,
     required this.arguments,
   });
@@ -338,7 +339,7 @@ class TransactionDetailsArgs {
 
   @override
   String toString() {
-    return 'TransactionDetailsArgs{key: $key, arguments: $arguments}';
+    return 'TransactionDetailsRouteArgs{key: $key, arguments: $arguments}';
   }
 }
 

@@ -10,6 +10,7 @@ import 'package:cash_ctrl/presentation/new_expense/new_expense_page.dart';
 import 'package:cash_ctrl/presentation/profile/profile_page.dart';
 import 'package:cash_ctrl/presentation/profile_completion/profile_completion_page.dart';
 import 'package:cash_ctrl/presentation/register/register_page.dart';
+import 'package:cash_ctrl/presentation/transaction_details/transaction_details.dart';
 import 'package:cash_ctrl/presentation/transactions/transactions_page.dart';
 import 'package:cash_ctrl/routing/guards/auth_guard.dart';
 import 'package:flutter/material.dart';
@@ -40,5 +41,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ProfileRoute.page),
         AutoRoute(page: BorrowMoneyRoute.page),
         AutoRoute(page: LendMoneyRoute.page),
+        AutoRoute(page: TransactionDetailsRoute.page),
       ];
 }
