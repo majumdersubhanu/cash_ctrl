@@ -8,6 +8,7 @@ import 'package:cash_ctrl/injection/injection.dart';
 import 'package:cash_ctrl/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:provider/provider.dart';
 
@@ -39,14 +40,17 @@ class DashboardPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  OutlinedButton(
-                      onPressed: () =>
-                          context.pushRoute(const LendMoneyRoute()),
-                      child: const Text("Lend Money")),
-                  OutlinedButton(
-                      onPressed: () =>
-                          context.pushRoute(const BorrowMoneyRoute()),
-                      child: const Text("Borrow Money")),
+                  OutlinedButton.icon(
+                    onPressed: () => context.pushRoute(const LendMoneyRoute()),
+                    label: const Text("Lend Money"),
+                    icon: Icon(Ionicons.arrow_up),
+                  ),
+                  OutlinedButton.icon(
+                    onPressed: () =>
+                        context.pushRoute(const BorrowMoneyRoute()),
+                    label: const Text("Borrow Money"),
+                    icon: Icon(Ionicons.arrow_down),
+                  ),
                 ],
               ),
               const Gap(20),
@@ -121,7 +125,19 @@ class _RecentTransactionsState extends State<RecentTransactions> {
                       paymentCategory?.toTitleCase ?? ''));
 
               return GestureDetector(
-                onTap: () => context.showWorkInProgress(),
+                onTap: () =>
+                    context.pushRoute(TransactionDetailsRoute(arguments: {
+                  'name': transactionState.transactions?[index].name,
+                  'payment_type':
+                      transactionState.transactions?[index].paymentType,
+                  'transaction_type':
+                      transactionState.transactions?[index].transactionType,
+                  'amount': transactionState.transactions?[index].amount,
+                  'category': transactionState.transactions?[index].category,
+                  'date': transactionState.transactions?[index].date,
+                  'description':
+                      transactionState.transactions?[index].description,
+                })),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.surface,

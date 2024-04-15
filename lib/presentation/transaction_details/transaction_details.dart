@@ -28,7 +28,12 @@ class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
     );
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Transaction Details"),
+        titleTextStyle: context.textTheme.headlineMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         physics: const BouncingScrollPhysics(),
@@ -45,13 +50,6 @@ class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
             textDirection: TextDirection.ltr,
             textBaseline: TextBaseline.ideographic,
             children: [
-              Text(
-                'Details',
-                style: context.textTheme.displayMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Gap(10),
               ...widget.arguments.keys.map((key) {
                 return Column(
                   children: [
@@ -71,7 +69,7 @@ class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
               ElevatedButton(
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => HomePage(
+                    builder: (context) => TransactionHandlerPage(
                       am: formGroup.value['am'].toString(),
                       pa: formGroup.value['pa'].toString(),
                       pn: formGroup.value['pn'].toString(),
@@ -79,7 +77,7 @@ class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
                     ),
                   ),
                 ),
-                child: const Text('Confirm Payment'),
+                child: const Text('Confirm Transaction'),
               ),
             ],
           ),
@@ -89,10 +87,10 @@ class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
   }
 }
 
-class HomePage extends StatefulWidget {
+class TransactionHandlerPage extends StatefulWidget {
   final String pa, pn, am, tn;
 
-  const HomePage(
+  const TransactionHandlerPage(
       {super.key,
       required this.pa,
       required this.pn,
@@ -100,10 +98,10 @@ class HomePage extends StatefulWidget {
       required this.tn});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _TransactionHandlerPageState createState() => _TransactionHandlerPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _TransactionHandlerPageState extends State<TransactionHandlerPage> {
   Future<UpiResponse>? _transaction;
   final UpiIndia _upiIndia = UpiIndia();
   List<UpiApp>? apps;

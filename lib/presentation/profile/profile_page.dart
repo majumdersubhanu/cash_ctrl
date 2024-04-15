@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cash_ctrl/core/extensions.dart';
+import 'package:cash_ctrl/core/logger.dart';
 import 'package:cash_ctrl/core/prefs.dart';
 import 'package:cash_ctrl/injection/injection.dart';
 import 'package:cash_ctrl/routing/app_router.dart';
@@ -43,9 +44,13 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
 
+    logger.w(currentUser);
+
     formGroup.value = {
       'full_name': currentUser?.fullName ?? 'N/A',
-      'date_of_birth': currentUser?.dateOfBirth ?? 'N/A',
+      'date_of_birth':
+          Jiffy.parseFromDateTime(currentUser?.dateOfBirth ?? DateTime.now())
+              .format(pattern: 'yyyy-MM-dd'),
       'gender': currentUser?.gender ?? 'N/A',
       'current_address': currentUser?.currentAddress ?? 'N/A',
       'nationality': currentUser?.nationality ?? 'N/A',
