@@ -29,7 +29,7 @@ class _TransactionDetailsPageState extends State<TransactionDetailsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Transaction Details"),
+        title: const Text("Transaction Details"),
         titleTextStyle: context.textTheme.headlineMedium?.copyWith(
           fontWeight: FontWeight.bold,
         ),

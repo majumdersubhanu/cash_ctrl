@@ -9,7 +9,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 @RoutePage()
 class RegisterPage extends StatefulWidget {
-  RegisterPage({super.key});
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();

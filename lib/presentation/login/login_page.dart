@@ -10,7 +10,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -120,15 +120,13 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const Gap(20),
-                ButtonBar(
-                  mainAxisSize: MainAxisSize.max,
-                  buttonAlignedDropdown: true,
-                  layoutBehavior: ButtonBarLayoutBehavior.padded,
+                OverflowBar(
+                  overflowDirection: VerticalDirection.down,
                   alignment: MainAxisAlignment.start,
                   children: [
                     TextButton(
                         onPressed: () =>
-                            context.pushRoute(ForgotPasswordRoute()),
+                            context.pushRoute(const ForgotPasswordRoute()),
                         child: const Text('Forgot Password?')),
                   ],
                 ),

@@ -128,7 +128,7 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
     return Container(
       padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceVariant,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(10),
       ),
       child: SingleChildScrollView(
@@ -196,7 +196,7 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
               style: context.textTheme.titleSmall?.copyWith(color: Colors.grey),
             ),
             const Gap(20),
-            ButtonBar(
+            OverflowBar(
               alignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton.icon(
@@ -209,7 +209,7 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
                 ),
                 TextButton.icon(
                   onPressed: () {
-                    context.replaceRoute(BaseRoute());
+                    context.replaceRoute(const BaseRoute());
                   },
                   icon: Icon(
                     Ionicons.checkmark_circle_outline,

@@ -34,7 +34,7 @@ class DashboardPage extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Gap(30),
+              const Gap(30),
               const DashboardAnalytics(),
               const Gap(20),
               Row(
@@ -43,13 +43,13 @@ class DashboardPage extends StatelessWidget {
                   OutlinedButton.icon(
                     onPressed: () => context.pushRoute(const LendMoneyRoute()),
                     label: const Text("Lend Money"),
-                    icon: Icon(Ionicons.arrow_up),
+                    icon: const Icon(Ionicons.arrow_up),
                   ),
                   OutlinedButton.icon(
                     onPressed: () =>
                         context.pushRoute(const BorrowMoneyRoute()),
                     label: const Text("Borrow Money"),
-                    icon: Icon(Ionicons.arrow_down),
+                    icon: const Icon(Ionicons.arrow_down),
                   ),
                 ],
               ),

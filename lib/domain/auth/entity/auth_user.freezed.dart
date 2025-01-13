@@ -27,8 +27,12 @@ mixin _$AuthUser {
   @JsonKey(name: 'refresh')
   String get refreshToken => throw _privateConstructorUsedError;
 
+  /// Serializes this AuthUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthUserCopyWith<AuthUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$AuthUserCopyWithImpl<$Res, $Val extends AuthUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,6 +85,8 @@ class _$AuthUserCopyWithImpl<$Res, $Val extends AuthUser>
     ) as $Val);
   }
 
+  /// Create a copy of AuthUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get user {
@@ -113,6 +121,8 @@ class __$$AuthUserImplCopyWithImpl<$Res>
       _$AuthUserImpl _value, $Res Function(_$AuthUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,11 +185,13 @@ class _$AuthUserImpl implements _AuthUser {
                 other.refreshToken == refreshToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, user, authToken, refreshToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthUserImplCopyWith<_$AuthUserImpl> get copyWith =>
@@ -212,8 +224,11 @@ abstract class _AuthUser implements AuthUser {
   @override
   @JsonKey(name: 'refresh')
   String get refreshToken;
+
+  /// Create a copy of AuthUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthUserImplCopyWith<_$AuthUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

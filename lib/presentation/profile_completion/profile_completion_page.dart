@@ -140,7 +140,7 @@ class ProfileCompletionPage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          color: Theme.of(context).colorScheme.background,
+          color: Theme.of(context).colorScheme.surface,
           child: Wrap(
             children: <Widget>[
               ListTile(

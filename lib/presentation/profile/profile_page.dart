@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ],
                   )
-                : Center(child: CircularProgressIndicator())),
+                : const Center(child: CircularProgressIndicator())),
       ),
     );
   }
