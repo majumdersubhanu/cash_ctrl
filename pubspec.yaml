@@ -1,10 +1,10 @@
 name: cash_ctrl
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.3 <4.0.0'
+  sdk: ">=3.3.3 <4.0.0"
 
 dependencies:
   flutter:
@@ -53,7 +53,6 @@ dev_dependencies:
   injectable_generator: any
   freezed: any
   json_serializable: any
-  flutter_launcher_icons: any
 
 flutter:
   uses-material-design: true
