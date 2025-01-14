@@ -94,19 +94,19 @@ class _BorrowMoneyPageState extends State<BorrowMoneyPage> {
                             child: buildQRCodeDialog(context),
                           );
 
-                          return const Dialog(
-                            child: Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  CircularProgressIndicator(),
-                                  Gap(20),
-                                  Text('Setting up profile...'),
-                                ],
-                              ),
-                            ),
-                          );
+                          // return const Dialog(
+                          //   child: Padding(
+                          //     padding: EdgeInsets.all(20.0),
+                          //     child: Row(
+                          //       mainAxisSize: MainAxisSize.min,
+                          //       children: [
+                          //         CircularProgressIndicator(),
+                          //         Gap(20),
+                          //         Text('Setting up profile...'),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // );
                         },
                       );
                     } else {
