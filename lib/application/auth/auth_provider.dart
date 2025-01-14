@@ -41,9 +41,10 @@ class AuthProvider extends ChangeNotifier {
         loginStatus = LoginStatus.loaded;
         notifyListeners();
 
-        NotificationMessage.showSuccess(context, message: "Login Success");
-
-        context.replaceRoute(const BaseRoute());
+        if (context.mounted) {
+          NotificationMessage.showSuccess(context, message: "Login Success");
+        }
+        if (context.mounted) context.replaceRoute(const BaseRoute());
       },
     );
   }
@@ -69,11 +70,11 @@ class AuthProvider extends ChangeNotifier {
 
         loginStatus = LoginStatus.loaded;
         notifyListeners();
-
-        NotificationMessage.showSuccess(context,
-            message: "Registration Successful");
-
-        context.replaceRoute(ProfileCompletionRoute());
+        if (context.mounted) {
+          NotificationMessage.showSuccess(context,
+              message: "Registration Successful");
+        }
+        if (context.mounted) context.replaceRoute(ProfileCompletionRoute());
       },
     );
   }
@@ -83,7 +84,7 @@ class AuthProvider extends ChangeNotifier {
     final result = await authRepository.resetPassword(
         data['username'], data['new_password'], data['confirm_new_password']);
 
-    if (result.ok) {
+    if (result.ok && context.mounted) {
       NotificationMessage.showSuccess(context,
           message: "Password reset successfully");
       AutoRouter.of(context).pushAndPopUntil(
@@ -91,17 +92,20 @@ class AuthProvider extends ChangeNotifier {
         predicate: (_) => false,
       );
     } else {
-      NotificationMessage.showError(context,
-          message: "Failed to reset password");
+      if (context.mounted) {
+        NotificationMessage.showError(context,
+            message: "Failed to reset password");
+      }
     }
   }
 
   Future<void> logout(BuildContext context) async {
     await getIt<AppPrefs>().clear();
-
-    AutoRouter.of(context).pushAndPopUntil(
-      LoginRoute(),
-      predicate: (_) => false,
-    );
+    if (context.mounted) {
+      AutoRouter.of(context).pushAndPopUntil(
+        LoginRoute(),
+        predicate: (_) => false,
+      );
+    }
   }
 }
