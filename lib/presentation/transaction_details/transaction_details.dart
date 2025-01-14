@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cash_ctrl/core/extensions.dart';
+import 'package:cash_ctrl/core/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -142,14 +143,14 @@ class _TransactionHandlerPageState extends State<TransactionHandlerPage> {
   Widget displayUpiApps() {
     if (apps == null) {
       return const Center(child: CircularProgressIndicator());
-    } else if (apps!.isEmpty)
+    } else if (apps!.isEmpty) {
       return Center(
         child: Text(
           "No apps found to handle transaction.",
           style: header,
         ),
       );
-    else
+    } else {
       return Align(
         alignment: Alignment.topCenter,
         child: SingleChildScrollView(
@@ -182,17 +183,18 @@ class _TransactionHandlerPageState extends State<TransactionHandlerPage> {
           ),
         ),
       );
+    }
   }
 
   String _upiErrorHandler(error) {
     switch (error) {
-      case UpiIndiaAppNotInstalledException:
+      case UpiIndiaAppNotInstalledException _:
         return 'Requested app not installed on device';
-      case UpiIndiaUserCancelledException:
+      case UpiIndiaUserCancelledException _:
         return 'You cancelled the transaction';
-      case UpiIndiaNullResponseException:
+      case UpiIndiaNullResponseException _:
         return 'Requested app didn\'t return any response';
-      case UpiIndiaInvalidParametersException:
+      case UpiIndiaInvalidParametersException _:
         return 'Requested app cannot handle the transaction';
       default:
         return 'An Unknown error has occurred';
@@ -202,16 +204,16 @@ class _TransactionHandlerPageState extends State<TransactionHandlerPage> {
   void _checkTxnStatus(String status) {
     switch (status) {
       case UpiPaymentStatus.SUCCESS:
-        print('Transaction Successful');
+        logger.d('Transaction Successful');
         break;
       case UpiPaymentStatus.SUBMITTED:
-        print('Transaction Submitted');
+        logger.d('Transaction Submitted');
         break;
       case UpiPaymentStatus.FAILURE:
-        print('Transaction Failed');
+        logger.d('Transaction Failed');
         break;
       default:
-        print('Received an Unknown transaction status');
+        logger.d('Received an Unknown transaction status');
     }
   }
 

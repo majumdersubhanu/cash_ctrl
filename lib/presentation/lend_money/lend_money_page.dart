@@ -56,7 +56,7 @@ class _LendMoneyPageState extends State<LendMoneyPage> {
                   borderLength: 30,
                   borderWidth: 10,
                   cutOutSize: context.width * 0.8,
-                  overlayColor: Colors.black.withOpacity(0.8)),
+                  overlayColor: Colors.black.withValues(alpha: 0.8)),
             ),
           ),
           const Gap(20),
