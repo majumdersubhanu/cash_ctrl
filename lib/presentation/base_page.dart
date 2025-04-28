@@ -37,7 +37,7 @@ class _BasePageState extends State<BasePage> {
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: GestureDetector(
-                onTap: () => context.pushRoute(ProfileRoute()),
+                onTap: () => context.pushRoute(const ProfileRoute()),
                 child: RandomAvatar('saytoonz', height: 35, width: 35)),
           )
         ],
@@ -58,7 +58,7 @@ class _BasePageState extends State<BasePage> {
       backgroundColor: Theme.of(context).colorScheme.surface,
       bottomNavigationBuilder: (_, tabsRouter) {
         return NavigationBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           indicatorColor: Theme.of(context).colorScheme.primary,
           surfaceTintColor: Theme.of(context).colorScheme.surface,

@@ -74,7 +74,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         'Username can not be empty',
                   },
                 ),
-                Gap(20),
+                const Gap(20),
                 ReactiveTextField(
                   obscureText: true,
                   formControlName: 'new_password',
@@ -89,7 +89,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         'Password can not be empty',
                   },
                 ),
-                Gap(20),
+                const Gap(20),
                 ReactiveTextField(
                   obscureText: true,
                   formControlName: 'confirm_new_password',

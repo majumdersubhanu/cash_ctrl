@@ -137,7 +137,7 @@ class _NewExpensePageState extends State<NewExpensePage> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (BuildContext context) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -161,7 +161,7 @@ class _NewExpensePageState extends State<NewExpensePage> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (BuildContext context) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -185,7 +185,7 @@ class _NewExpensePageState extends State<NewExpensePage> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (BuildContext context) {
         return Column(
           mainAxisSize: MainAxisSize.min,

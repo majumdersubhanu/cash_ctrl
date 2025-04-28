@@ -198,7 +198,7 @@ class TransactionsPage extends StatelessWidget {
   void _showExportOptions(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       builder: (BuildContext context) {
         return SafeArea(
           child: Wrap(
