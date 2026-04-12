@@ -9,6 +9,103 @@
 
 part of 'app_router.dart';
 
+abstract class _$AppRouter extends RootStackRouter {
+  // ignore: unused_element
+  _$AppRouter();
+
+  @override
+  final Map<String, PageFactory> pagesMap = {
+    AnalyticsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AnalyticsPage(),
+      );
+    },
+    BaseRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BasePage(),
+      );
+    },
+    BorrowMoneyRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const BorrowMoneyPage(),
+      );
+    },
+    DashboardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DashboardPage(),
+      );
+    },
+    ForgotPasswordRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ForgotPasswordPage(),
+      );
+    },
+    LendMoneyRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LendMoneyPage(),
+      );
+    },
+    LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: LoginPage(key: args.key),
+      );
+    },
+    NewExpenseRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewExpensePage(),
+      );
+    },
+    ProfileCompletionRoute.name: (routeData) {
+      final args = routeData.argsAs<ProfileCompletionRouteArgs>(
+          orElse: () => const ProfileCompletionRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProfileCompletionPage(key: args.key),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfilePage(),
+      );
+    },
+    RegisterRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: RegisterPage(key: args.key),
+      );
+    },
+    TransactionDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<TransactionDetailsRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: TransactionDetailsPage(
+          key: args.key,
+          arguments: args.arguments,
+        ),
+      );
+    },
+    TransactionsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TransactionsPage(),
+      );
+    },
+  };
+}
+
 /// generated route for
 /// [AnalyticsPage]
 class AnalyticsRoute extends PageRouteInfo<void> {

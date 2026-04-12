@@ -161,16 +161,16 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  toggleVisibility() {
+    setState(() {
+      isObscure = !isObscure;
+    });
+  }
+
   Future<void> _handleSubmit(Map<String, dynamic> formValue) async {
     await context.read<AuthProvider>().login(context, {
       "login": formValue['login'],
       "password": formValue['password'],
-    });
-  }
-
-  toggleVisibility() {
-    setState(() {
-      isObscure = !isObscure;
     });
   }
 }
