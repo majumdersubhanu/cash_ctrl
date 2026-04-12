@@ -117,7 +117,12 @@ class AnalyticsRoute extends PageRouteInfo<void> {
 
   static const String name = 'AnalyticsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AnalyticsPage();
+    },
+  );
 }
 
 /// generated route for
@@ -131,7 +136,12 @@ class BaseRoute extends PageRouteInfo<void> {
 
   static const String name = 'BaseRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const BasePage();
+    },
+  );
 }
 
 /// generated route for
@@ -145,7 +155,12 @@ class BorrowMoneyRoute extends PageRouteInfo<void> {
 
   static const String name = 'BorrowMoneyRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const BorrowMoneyPage();
+    },
+  );
 }
 
 /// generated route for
@@ -159,7 +174,12 @@ class DashboardRoute extends PageRouteInfo<void> {
 
   static const String name = 'DashboardRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DashboardPage();
+    },
+  );
 }
 
 /// generated route for
@@ -173,7 +193,12 @@ class ForgotPasswordRoute extends PageRouteInfo<void> {
 
   static const String name = 'ForgotPasswordRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ForgotPasswordPage();
+    },
+  );
 }
 
 /// generated route for
@@ -187,35 +212,31 @@ class LendMoneyRoute extends PageRouteInfo<void> {
 
   static const String name = 'LendMoneyRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LendMoneyPage();
+    },
+  );
 }
 
 /// generated route for
 /// [LoginPage]
-class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute({List<PageRouteInfo>? children})
+      : super(
           LoginRoute.name,
-          args: LoginRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'LoginRoute';
 
-  static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
-}
-
-class LoginRouteArgs {
-  const LoginRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'LoginRouteArgs{key: $key}';
-  }
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LoginPage();
+    },
+  );
 }
 
 /// generated route for
@@ -229,7 +250,12 @@ class NewExpenseRoute extends PageRouteInfo<void> {
 
   static const String name = 'NewExpenseRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const NewExpensePage();
+    },
+  );
 }
 
 /// generated route for
@@ -246,8 +272,14 @@ class ProfileCompletionRoute extends PageRouteInfo<ProfileCompletionRouteArgs> {
 
   static const String name = 'ProfileCompletionRoute';
 
-  static const PageInfo<ProfileCompletionRouteArgs> page =
-      PageInfo<ProfileCompletionRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ProfileCompletionRouteArgs>(
+          orElse: () => const ProfileCompletionRouteArgs());
+      return ProfileCompletionPage(key: args.key);
+    },
+  );
 }
 
 class ProfileCompletionRouteArgs {
@@ -272,36 +304,31 @@ class ProfileRoute extends PageRouteInfo<void> {
 
   static const String name = 'ProfileRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProfilePage();
+    },
+  );
 }
 
 /// generated route for
 /// [RegisterPage]
-class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
-  RegisterRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class RegisterRoute extends PageRouteInfo<void> {
+  const RegisterRoute({List<PageRouteInfo>? children})
+      : super(
           RegisterRoute.name,
-          args: RegisterRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'RegisterRoute';
 
-  static const PageInfo<RegisterRouteArgs> page =
-      PageInfo<RegisterRouteArgs>(name);
-}
-
-class RegisterRouteArgs {
-  const RegisterRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'RegisterRouteArgs{key: $key}';
-  }
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const RegisterPage();
+    },
+  );
 }
 
 /// generated route for
@@ -323,8 +350,16 @@ class TransactionDetailsRoute
 
   static const String name = 'TransactionDetailsRoute';
 
-  static const PageInfo<TransactionDetailsRouteArgs> page =
-      PageInfo<TransactionDetailsRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TransactionDetailsRouteArgs>();
+      return TransactionDetailsPage(
+        key: args.key,
+        arguments: args.arguments,
+      );
+    },
+  );
 }
 
 class TransactionDetailsRouteArgs {
@@ -354,5 +389,10 @@ class TransactionsRoute extends PageRouteInfo<void> {
 
   static const String name = 'TransactionsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TransactionsPage();
+    },
+  );
 }

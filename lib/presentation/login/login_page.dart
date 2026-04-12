@@ -121,6 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const Gap(20),
                 OverflowBar(
+                  overflowDirection: VerticalDirection.down,
                   alignment: MainAxisAlignment.start,
                   children: [
                     TextButton(

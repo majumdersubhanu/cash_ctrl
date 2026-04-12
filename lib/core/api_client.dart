@@ -70,11 +70,13 @@ class APIClient {
       if (router.current.name != LoginRoute.name) {
         logger.d("Clearing App Prefs");
         await getIt<AppPrefs>().clear();
-        context.showSnackBar("Token has expired! Please re-login..");
-        AutoRouter.of(context).pushAndPopUntil(
-          LoginRoute(),
-          predicate: (_) => false,
-        );
+        if (context.mounted) {
+          context.showSnackBar("Token has expired! Please re-login..");
+          AutoRouter.of(context).pushAndPopUntil(
+            LoginRoute(),
+            predicate: (_) => false,
+          );
+        }
       }
     }
   }

@@ -47,8 +47,6 @@ String getCategoryName(ExpenseCategory expenseCategory) {
       return 'Investment';
     case ExpenseCategory.miscellaneous:
       return 'Miscellaneous';
-    default:
-      return 'Unknown';
   }
 }
 
@@ -60,8 +58,6 @@ String getPaymentModeName(PaymentMode paymentMode) {
       return 'Card';
     case PaymentMode.upi:
       return 'UPI';
-    default:
-      return 'Unknown';
   }
 }
 
@@ -70,8 +66,6 @@ String getTransactionModeName(TransactionMode transactionMode) {
     case TransactionMode.income:
       return 'Income';
     case TransactionMode.expense:
-      return 'Expense';
-    default:
       return 'Expense';
   }
 }
@@ -84,8 +78,6 @@ IconData? getPaymentModeIcon(PaymentMode paymentMode) {
       return Ionicons.card_outline;
     case PaymentMode.upi:
       return Ionicons.phone_portrait_outline;
-    default:
-      return Ionicons.help_circle_outline;
   }
 }
 
@@ -95,8 +87,6 @@ IconData? getTransactionModeIcon(TransactionMode transactionMode) {
       return Ionicons.trending_up_outline;
     case TransactionMode.expense:
       return Ionicons.trending_down_outline;
-    default:
-      return Ionicons.help_circle_outline;
   }
 }
 
@@ -122,8 +112,6 @@ IconData getCategoryIcon(ExpenseCategory expenseCategory) {
       return Ionicons.trending_up_outline;
     case ExpenseCategory.miscellaneous:
       return Ionicons.layers_outline;
-    default:
-      return Ionicons.bug_outline;
   }
 }
 
@@ -135,9 +123,8 @@ PaymentMode getPaymentModeEnumValue(String paymentMode) {
       return PaymentMode.card;
     case 'UPI':
       return PaymentMode.upi;
-    default:
-      return PaymentMode.cash;
   }
+  return PaymentMode.upi;
 }
 
 TransactionMode getTransactionModeEnumValue(String transactionMode) {
@@ -146,9 +133,8 @@ TransactionMode getTransactionModeEnumValue(String transactionMode) {
       return TransactionMode.income;
     case 'Expense':
       return TransactionMode.income;
-    default:
-      return TransactionMode.income;
   }
+  return TransactionMode.income;
 }
 
 ExpenseCategory getExpenseCategoryEnumValue(String category) {
@@ -173,7 +159,6 @@ ExpenseCategory getExpenseCategoryEnumValue(String category) {
       return ExpenseCategory.investment;
     case 'Miscellaneous':
       return ExpenseCategory.miscellaneous;
-    default:
-      return ExpenseCategory.miscellaneous;
   }
+  return ExpenseCategory.miscellaneous;
 }

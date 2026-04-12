@@ -18,7 +18,9 @@ class ProfileCompletionProvider extends ChangeNotifier {
     if (pickedFile != null) {
       _editImage(File(pickedFile.path), context);
     } else {
-      context.showSnackBar('No image was selected, please try again.');
+      if (context.mounted) {
+        context.showSnackBar('No image was selected, please try again.');
+      }
     }
   }
 

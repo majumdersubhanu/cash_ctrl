@@ -32,10 +32,12 @@ class UserProvider extends ChangeNotifier {
         logger.i("Profile Update Response : $user");
         notifyListeners();
 
-        NotificationMessage.showSuccess(context,
-            message: "Profile Creation Successful");
+        if (context.mounted) {
+          NotificationMessage.showSuccess(context,
+              message: "Profile Creation Successful");
 
-        context.replaceRoute(const BaseRoute());
+          context.replaceRoute(const BaseRoute());
+        }
       },
     );
   }

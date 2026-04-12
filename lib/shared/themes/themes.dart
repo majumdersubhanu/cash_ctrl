@@ -43,20 +43,20 @@ ThemeData atlassianThemeDataLight() {
       borderSide: BorderSide(color: primaryColor),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: primaryColor.withOpacity(0.5)),
+      borderSide: BorderSide(color: primaryColor.withValues(alpha: 0.5)),
     ),
     focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: primaryColor, width: 2),
     ),
     labelStyle: const TextStyle(color: textColor),
-    hintStyle: TextStyle(color: textColor.withOpacity(0.6)),
+    hintStyle: TextStyle(color: textColor.withValues(alpha: 0.6)),
     fillColor: surfaceColor,
     filled: true,
   );
 
   CardTheme cardTheme = CardTheme(
     color: surfaceColor,
-    shadowColor: Colors.black.withOpacity(0.2),
+    shadowColor: Colors.black.withValues(alpha: 0.2),
     elevation: 4,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
   );
@@ -86,7 +86,6 @@ ThemeData atlassianThemeDataLight() {
       primary: primaryColor,
       secondary: secondaryColor,
       error: errorColor,
-      background: backgroundColor,
       onPrimary: Colors.white,
       onSecondary: textColor,
       surface: surfaceColor,
@@ -155,20 +154,20 @@ ThemeData atlassianThemeDataDark() {
       borderSide: BorderSide(color: primaryColor),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: primaryColor.withOpacity(0.5)),
+      borderSide: BorderSide(color: primaryColor.withValues(alpha: 0.5)),
     ),
     focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: primaryColor, width: 2),
     ),
     labelStyle: const TextStyle(color: textColor),
-    hintStyle: TextStyle(color: textColor.withOpacity(0.6)),
+    hintStyle: TextStyle(color: textColor.withValues(alpha: 0.6)),
     fillColor: backgroundColor,
     filled: true,
   );
 
   CardTheme cardTheme = CardTheme(
     color: surfaceColor,
-    shadowColor: Colors.black.withOpacity(0.2),
+    shadowColor: Colors.black.withValues(alpha: 0.2),
     elevation: 4,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
   );
@@ -198,7 +197,6 @@ ThemeData atlassianThemeDataDark() {
       primary: primaryColor,
       secondary: secondaryColor,
       error: errorColor,
-      background: backgroundColor,
       onPrimary: Colors.white,
       onSecondary: textColor,
       surface: surfaceColor,
